@@ -29,6 +29,7 @@ namespace Campionamento
                 {
                     valoriGrigliaMain = dgvMain.getValues();
                     loadComboBox();
+                    pickUpEstrazione.Maximum = dgvMain.RowCount-1;
                 }
             }
         }
@@ -53,7 +54,7 @@ namespace Campionamento
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            rdbReimmissione.Checked = true;
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -63,6 +64,24 @@ namespace Campionamento
                 myGrid.Values temp = valoriGrigliaMain.Single(s => s.HeaderCell == cmbShow.Text);
                 MessageBox.Show(string.Format("Valore minimo: {0}\nValore massimo: {1}\nMedia: {2}\n Varianza: {3}", temp.Min, temp.Max, temp.Media, temp.Var), "Valori", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnEstrai_Click(object sender, EventArgs e)
+        {
+            Estrazioni estrazioni = new Estrazioni();
+            if (rdbReimmissione.Checked)
+                fillDataGridView(estrazioni.EstrazioneConReimmissione(dgvMain, (int)pickUpEstrazione.Value));
+            else if (rdbNoReimmissione.Checked)
+                fillDataGridView(estrazioni.EstrazioneNoReimmisione(dgvMain, (int)pickUpEstrazione.Value));
+        }
+        private void fillDataGridView(List<string> list)
+        {
+            dgvEstrazioni.Clear();
+            dgvEstrazioni.ColumnCount = dgvMain.ColumnCount;
+            for (int i = 0; i < dgvEstrazioni.ColumnCount; i++)
+                dgvEstrazioni.Columns[i].HeaderCell.Value = dgvMain.Columns[i].HeaderCell.Value;
+            for (int i = 0; i < list.Count; i++)
+                dgvEstrazioni.Rows.Add(list[i].Split(';'));
         }
     }
 }
