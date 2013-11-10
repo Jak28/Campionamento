@@ -263,8 +263,18 @@ namespace Campionamento
             if (correct && cmbScegliColonnaPopolazione.Text!=string.Empty)
             {
                 List<double> temp = new List<double>();
-                var v = gridInList.Select(s => s.HeaderCellText == cmbScegliColonnaPopolazione.Text).Cast<myGrid.GridInList>();
-                myGrid.GridInList tempClass =(myGrid.GridInList) v;
+                /*var v = gridInList.Select(s => s.HeaderCellText == cmbScegliColonnaPopolazione.Text).Cast<myGrid.GridInList>().First();*/
+                
+                myGrid.GridInList tempClass=new myGrid.GridInList();
+                foreach (myGrid.GridInList v in gridInList)
+                {
+                    if (v.HeaderCellText == cmbScegliColonnaPopolazione.Text)
+                    {
+                        tempClass = v;
+                        break;
+                    }
+                }
+                
                 for (int i = 0; i < tempClass.ValueCells.Count; i++)
                     temp.Add(Convert.ToDouble(tempClass.ValueCells[i]));
                 var sorted = from var in temp
