@@ -74,8 +74,10 @@ namespace Campionamento
             ((Control)this.tabEstrazioniMultiple).Enabled = false;
             grpMainTab.Enabled = false;
             grpEstrazioni.Enabled = false;
+            grpEstrazioniMultiple.Enabled = false;
             rdbReimmissione.Checked = true;
             tmrControl.Start();
+           
         }
         private void btnView_Click(object sender, EventArgs e)
         {
@@ -165,7 +167,7 @@ namespace Campionamento
             }
             for (int i = 0; i < valoriGrigliaEstrazioniMultiple.Count; i++)
                 cmbSceltaNumeroEstrazione.Items.Add(valoriGrigliaEstrazioniMultiple[i].TableName);
-
+            grpEstrazioniMultiple.Enabled = true;
         }
         private void setIntoMultipleExtracionGrid(List<string> tmp, int n)
         {

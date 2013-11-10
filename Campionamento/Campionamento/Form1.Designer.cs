@@ -53,7 +53,7 @@
             this.pickUpEstrazione = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.tabEstrazioniMultiple = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpEstrazioniMultiple = new System.Windows.Forms.GroupBox();
             this.btnMostraDati = new System.Windows.Forms.Button();
             this.cmbSceltaColonna = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).BeginInit();
             this.tabEstrazioniMultiple.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpEstrazioniMultiple.SuspendLayout();
             this.grpEstrazioneMultipla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).BeginInit();
@@ -196,6 +196,7 @@
             this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMain.Location = new System.Drawing.Point(5, 6);
             this.dgvMain.Name = "dgvMain";
+            this.dgvMain.ReadOnly = true;
             this.dgvMain.Size = new System.Drawing.Size(263, 350);
             this.dgvMain.TabIndex = 0;
             // 
@@ -256,6 +257,7 @@
             this.dgvEstrazioni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEstrazioni.Location = new System.Drawing.Point(6, 6);
             this.dgvEstrazioni.Name = "dgvEstrazioni";
+            this.dgvEstrazioni.ReadOnly = true;
             this.dgvEstrazioni.Size = new System.Drawing.Size(240, 350);
             this.dgvEstrazioni.TabIndex = 2;
             // 
@@ -334,7 +336,7 @@
             // 
             // tabEstrazioniMultiple
             // 
-            this.tabEstrazioniMultiple.Controls.Add(this.groupBox2);
+            this.tabEstrazioniMultiple.Controls.Add(this.grpEstrazioniMultiple);
             this.tabEstrazioniMultiple.Controls.Add(this.grpEstrazioneMultipla);
             this.tabEstrazioniMultiple.Controls.Add(this.dgvEstrazioniMultiple);
             this.tabEstrazioniMultiple.Location = new System.Drawing.Point(4, 22);
@@ -345,19 +347,19 @@
             this.tabEstrazioniMultiple.Text = "Estrazioni multiple";
             this.tabEstrazioniMultiple.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // grpEstrazioniMultiple
             // 
-            this.groupBox2.Controls.Add(this.btnMostraDati);
-            this.groupBox2.Controls.Add(this.cmbSceltaColonna);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cmbSceltaNumeroEstrazione);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(252, 175);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 181);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Valori Estrazioni Multiple";
+            this.grpEstrazioniMultiple.Controls.Add(this.btnMostraDati);
+            this.grpEstrazioniMultiple.Controls.Add(this.cmbSceltaColonna);
+            this.grpEstrazioniMultiple.Controls.Add(this.label7);
+            this.grpEstrazioniMultiple.Controls.Add(this.cmbSceltaNumeroEstrazione);
+            this.grpEstrazioniMultiple.Controls.Add(this.label6);
+            this.grpEstrazioniMultiple.Location = new System.Drawing.Point(252, 175);
+            this.grpEstrazioniMultiple.Name = "grpEstrazioniMultiple";
+            this.grpEstrazioniMultiple.Size = new System.Drawing.Size(200, 181);
+            this.grpEstrazioniMultiple.TabIndex = 5;
+            this.grpEstrazioniMultiple.TabStop = false;
+            this.grpEstrazioniMultiple.Text = "Valori Estrazioni Multiple";
             // 
             // btnMostraDati
             // 
@@ -423,11 +425,6 @@
             // pickUpNumeroCampione
             // 
             this.pickUpNumeroCampione.Location = new System.Drawing.Point(76, 55);
-            this.pickUpNumeroCampione.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.pickUpNumeroCampione.Name = "pickUpNumeroCampione";
             this.pickUpNumeroCampione.Size = new System.Drawing.Size(121, 20);
             this.pickUpNumeroCampione.TabIndex = 6;
@@ -482,11 +479,6 @@
             // pickUpPopolazioneEstrazioniMultiple
             // 
             this.pickUpPopolazioneEstrazioniMultiple.Location = new System.Drawing.Point(77, 29);
-            this.pickUpPopolazioneEstrazioniMultiple.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.pickUpPopolazioneEstrazioniMultiple.Name = "pickUpPopolazioneEstrazioniMultiple";
             this.pickUpPopolazioneEstrazioniMultiple.Size = new System.Drawing.Size(120, 20);
             this.pickUpPopolazioneEstrazioniMultiple.TabIndex = 1;
@@ -510,6 +502,7 @@
             this.dgvEstrazioniMultiple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEstrazioniMultiple.Location = new System.Drawing.Point(6, 6);
             this.dgvEstrazioniMultiple.Name = "dgvEstrazioniMultiple";
+            this.dgvEstrazioniMultiple.ReadOnly = true;
             this.dgvEstrazioniMultiple.Size = new System.Drawing.Size(240, 350);
             this.dgvEstrazioniMultiple.TabIndex = 3;
             // 
@@ -540,8 +533,8 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).EndInit();
             this.tabEstrazioniMultiple.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpEstrazioniMultiple.ResumeLayout(false);
+            this.grpEstrazioniMultiple.PerformLayout();
             this.grpEstrazioneMultipla.ResumeLayout(false);
             this.grpEstrazioneMultipla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).EndInit();
@@ -587,7 +580,7 @@
         private System.Windows.Forms.NumericUpDown pickUpPopolazioneEstrazioniMultiple;
         private System.Windows.Forms.Label label4;
         private myGrid.myGrid dgvEstrazioniMultiple;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpEstrazioniMultiple;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnMostraDati;
         private System.Windows.Forms.ComboBox cmbSceltaColonna;
