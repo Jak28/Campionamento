@@ -53,6 +53,12 @@
             this.pickUpEstrazione = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.tabEstrazioniMultiple = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnMostraDati = new System.Windows.Forms.Button();
+            this.cmbSceltaColonna = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbSceltaNumeroEstrazione = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.grpEstrazioneMultipla = new System.Windows.Forms.GroupBox();
             this.pickUpNumeroCampione = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,12 +69,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dgvEstrazioniMultiple = new myGrid.myGrid();
             this.tmrControl = new System.Windows.Forms.Timer(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbSceltaNumeroEstrazione = new System.Windows.Forms.ComboBox();
-            this.cmbSceltaColonna = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnMostraDati = new System.Windows.Forms.Button();
             this.tabCampionamento.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.grpMainTab.SuspendLayout();
@@ -80,11 +80,11 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).BeginInit();
             this.tabEstrazioniMultiple.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.grpEstrazioneMultipla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCampionamento
@@ -345,6 +345,65 @@
             this.tabEstrazioniMultiple.Text = "Estrazioni multiple";
             this.tabEstrazioniMultiple.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnMostraDati);
+            this.groupBox2.Controls.Add(this.cmbSceltaColonna);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.cmbSceltaNumeroEstrazione);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(252, 175);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 181);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Valori Estrazioni Multiple";
+            // 
+            // btnMostraDati
+            // 
+            this.btnMostraDati.Location = new System.Drawing.Point(39, 141);
+            this.btnMostraDati.Name = "btnMostraDati";
+            this.btnMostraDati.Size = new System.Drawing.Size(75, 23);
+            this.btnMostraDati.TabIndex = 4;
+            this.btnMostraDati.Text = "Mostra";
+            this.btnMostraDati.UseVisualStyleBackColor = true;
+            this.btnMostraDati.Click += new System.EventHandler(this.btnMostraDati_Click);
+            // 
+            // cmbSceltaColonna
+            // 
+            this.cmbSceltaColonna.FormattingEnabled = true;
+            this.cmbSceltaColonna.Location = new System.Drawing.Point(12, 102);
+            this.cmbSceltaColonna.Name = "cmbSceltaColonna";
+            this.cmbSceltaColonna.Size = new System.Drawing.Size(134, 21);
+            this.cmbSceltaColonna.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 86);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Scegliere colonna";
+            // 
+            // cmbSceltaNumeroEstrazione
+            // 
+            this.cmbSceltaNumeroEstrazione.FormattingEnabled = true;
+            this.cmbSceltaNumeroEstrazione.Location = new System.Drawing.Point(9, 50);
+            this.cmbSceltaNumeroEstrazione.Name = "cmbSceltaNumeroEstrazione";
+            this.cmbSceltaNumeroEstrazione.Size = new System.Drawing.Size(134, 21);
+            this.cmbSceltaNumeroEstrazione.TabIndex = 1;
+            this.cmbSceltaNumeroEstrazione.SelectedIndexChanged += new System.EventHandler(this.cmbSceltaNumeroEstrazione_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(143, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Secgliere Numero Estrazione";
+            // 
             // grpEstrazioneMultipla
             // 
             this.grpEstrazioneMultipla.Controls.Add(this.pickUpNumeroCampione);
@@ -377,6 +436,7 @@
             0,
             0,
             0});
+            this.pickUpNumeroCampione.ValueChanged += new System.EventHandler(this.pickUpNumeroCampione_ValueChanged);
             // 
             // label5
             // 
@@ -457,63 +517,6 @@
             // 
             this.tmrControl.Tick += new System.EventHandler(this.tmrControl_Tick);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnMostraDati);
-            this.groupBox2.Controls.Add(this.cmbSceltaColonna);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cmbSceltaNumeroEstrazione);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(252, 175);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 181);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Valori Estrazioni Multiple";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Secgliere Numero Estrazione";
-            // 
-            // cmbSceltaNumeroEstrazione
-            // 
-            this.cmbSceltaNumeroEstrazione.FormattingEnabled = true;
-            this.cmbSceltaNumeroEstrazione.Location = new System.Drawing.Point(9, 50);
-            this.cmbSceltaNumeroEstrazione.Name = "cmbSceltaNumeroEstrazione";
-            this.cmbSceltaNumeroEstrazione.Size = new System.Drawing.Size(134, 21);
-            this.cmbSceltaNumeroEstrazione.TabIndex = 1;
-            // 
-            // cmbSceltaColonna
-            // 
-            this.cmbSceltaColonna.FormattingEnabled = true;
-            this.cmbSceltaColonna.Location = new System.Drawing.Point(12, 102);
-            this.cmbSceltaColonna.Name = "cmbSceltaColonna";
-            this.cmbSceltaColonna.Size = new System.Drawing.Size(134, 21);
-            this.cmbSceltaColonna.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 86);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Scegliere colonna";
-            // 
-            // btnMostraDati
-            // 
-            this.btnMostraDati.Location = new System.Drawing.Point(39, 141);
-            this.btnMostraDati.Name = "btnMostraDati";
-            this.btnMostraDati.Size = new System.Drawing.Size(75, 23);
-            this.btnMostraDati.TabIndex = 4;
-            this.btnMostraDati.Text = "Mostra";
-            this.btnMostraDati.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,13 +540,13 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).EndInit();
             this.tabEstrazioniMultiple.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.grpEstrazioneMultipla.ResumeLayout(false);
             this.grpEstrazioneMultipla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
