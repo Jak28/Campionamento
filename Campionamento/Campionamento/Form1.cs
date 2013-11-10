@@ -22,6 +22,7 @@ namespace Campionamento
         List<myGrid.Values> valoriGrigliaMain = new List<myGrid.Values>();
         List<myGrid.Values> valoriGrigliaCampionamento = new List<myGrid.Values>();
         List<myGrid.ValuesMultiExtracions> valoriGrigliaEstrazioniMultiple = new List<myGrid.ValuesMultiExtracions>();
+        List<myGrid.GridInList> gridInList = new List<myGrid.GridInList>();
         private void btnLoadFromCSV_Click(object sender, EventArgs e)
         {
             OpenFileDialog opendlg = new OpenFileDialog();
@@ -45,6 +46,8 @@ namespace Campionamento
                 ((Control)this.tabEstrazioni).Enabled = true;
                 grpMainTab.Enabled = true;
                 ((Control)this.tabEstrazioniMultiple).Enabled = true;
+                ((Control)this.tabClassi).Enabled = true;
+                gridInList = dgvMain.transformGridInList();
             }
         }
         private void btnLoadFromDB_Click(object sender, EventArgs e)
@@ -66,6 +69,9 @@ namespace Campionamento
             cmbShow.Items.Clear();
             foreach (myGrid.Values v in valoriGrigliaMain)
                 cmbShow.Items.Add(v.HeaderCell);
+            cmbScegliColonnaPopolazione.Items.Clear();
+            foreach (myGrid.Values v in valoriGrigliaMain)
+                cmbScegliColonnaPopolazione.Items.Add(v.HeaderCell);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -77,6 +83,7 @@ namespace Campionamento
             grpEstrazioniMultiple.Enabled = false;
             rdbReimmissione.Checked = true;
             tmrControl.Start();
+            ((Control)this.tabClassi).Enabled = false;
            
         }
         private void btnView_Click(object sender, EventArgs e)
@@ -248,6 +255,41 @@ namespace Campionamento
                 var temp = v.Values.Single(s => s.HeaderCell == cmbSceltaColonna.Text);
                 MessageBox.Show(string.Format("Valore minimo: {0}\nValore massimo: {1}\nMedia: {2}\n Varianza: {3}", temp.Min, temp.Max, temp.Media, temp.Var), "Valori", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        private void btnScegliColonnaClassiPopolazioneOk_Click(object sender, EventArgs e)
+        {
+            bool correct = txtNClassi.Text != string.Empty && txtXMax.Text != string.Empty && txtXMin.Text != string.Empty
+                         && txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid;
+            if (correct && cmbScegliColonnaPopolazione.Text!=string.Empty)
+            {
+                List<double> temp = new List<double>();
+                var v = gridInList.Select(s => s.HeaderCellText == cmbScegliColonnaPopolazione.Text).Cast<myGrid.GridInList>();
+                myGrid.GridInList tempClass =(myGrid.GridInList) v;
+                for (int i = 0; i < tempClass.ValueCells.Count; i++)
+                    temp.Add(Convert.ToDouble(tempClass.ValueCells[i]));
+                var sorted = from var in temp
+                             orderby var ascending
+                             select var;
+                double nClassi=Convert.ToInt32(txtNClassi.Text);
+                for (int i = 0; i < nClassi; i++)
+                {
+                    double min = Convert.ToDouble(txtXMin.Text);
+                    double max = Convert.ToDouble(txtXMax.Text);
+                    IEnumerable<double> tempIE = temp.Where(s => (s > (min + nClassi * 1) && (s < (max + nClassi * i))));
+                    dgvClassiPopolazione.RowCount++;
+                    dgvClassiPopolazione[0, dgvClassiPopolazione.RowCount - 1].Value = min + i * nClassi;
+                    dgvClassiPopolazione[1, dgvClassiPopolazione.RowCount - 1].Value = (max + i * nClassi < max) ? max + i * nClassi : max;
+                    dgvClassiPopolazione[2, dgvClassiPopolazione.RowCount - 1].Value = IEnumerableLenght(tempIE);
+                }
+                
+            }
+        }
+        private int IEnumerableLenght(IEnumerable<double> ie)
+        {
+            int count = 0;
+            foreach (var d in ie)
+                count++;
+            return count;
         }
     }
 }

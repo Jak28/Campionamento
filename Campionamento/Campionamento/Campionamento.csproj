@@ -92,6 +92,10 @@
       <Project>{6DACCCAA-84CF-48F2-8B65-BA9F357E92C2}</Project>
       <Name>myGrid</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RegexTextBox\RegexTextBox.csproj">
+      <Project>{BA69EAF7-FEF2-43F2-ADF0-BD2002DCE6CC}</Project>
+      <Name>RegexTextBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

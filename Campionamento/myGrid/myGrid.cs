@@ -43,7 +43,7 @@ namespace myGrid
             this.DataSource = ado.daTable;
             if (!checkGridIsCorrect())
                 Clear();
-            ado.chiudiConnessione();
+            ado.chiudiConnessione(); 
         }
         public void Clear()
         {
@@ -107,6 +107,27 @@ namespace myGrid
                     results.Var = 1.0 / popolazione * Math.Sqrt((popolazione * ssqx) - (sx * sx));
                 }
                 ret.Add(results);
+            }
+            return ret;
+        }
+        public List<GridInList> transformGridInList()
+        {
+            List<GridInList> ret = new List<GridInList>();
+            for (int i = 0; i < this.ColumnCount; i++)
+            {
+                GridInList temp = new GridInList();
+                
+                temp.HeaderCellText = this.Columns[i].HeaderCell.Value.ToString();
+                temp.ValueCells = new List<string>();
+                for (int j = 0; j < this.RowCount; j++)
+                {
+                    try
+                    {
+                        temp.ValueCells.Add(this[i, j].Value.ToString());
+                    }
+                    catch { }
+                }
+                ret.Add(temp);
             }
             return ret;
         }
