@@ -24,6 +24,7 @@ namespace myGrid
                 return;
             using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
             {
+                this.Clear();
                 string[] tmp = sr.ReadLine().Split(';');
                 this.ColumnCount=tmp.Length;
                 for (int i = 0; i < tmp.Length; i++)
@@ -40,9 +41,9 @@ namespace myGrid
             string query = string.Format("SELECT * FROM {0}", nomeTabella);
             ado.eseguiQuery(query, CommandType.Text);
             this.DataSource = ado.daTable;
-            ado.chiudiConnessione();
             if (!checkGridIsCorrect())
                 Clear();
+            ado.chiudiConnessione();
         }
         public void Clear()
         {
@@ -54,9 +55,10 @@ namespace myGrid
             string error=string.Empty;
             System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[0-9]{1,}([.,][0-9]{0,})?$");
             for (int i = 0; i < this.ColumnCount; i++)
-                for (int j = 0; j < this.RowCount-1; j++)
-                    if (!regex.IsMatch(this[i, j].Value.ToString()))
-                        error = error + '\n' + string.Format("Error at column {0} row {1} value: {2}", i, j, this[i, j].Value.ToString());
+                for (int j = 0; j < this.RowCount - 1; j++)
+                    if (this[i, j].Value != null)
+                        if (!regex.IsMatch(this[i, j].Value.ToString()))
+                            error = error + '\n' + string.Format("Error at column {0} row {1} value: {2}", i, j, this[i, j].Value.ToString());
             if (error != string.Empty)
             {
                 MessageBox.Show(String.Format("Error{0} in table at:\n {1}", (counterChar(error, '\n') == 1) ? "s " : " ", error), "Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -87,14 +89,17 @@ namespace myGrid
                 results.HeaderCell = this.Columns[i].HeaderCell.Value.ToString();
                 for (int j = 0; j < this.RowCount-1; j++)
                 {
-                    double.TryParse(this[i, j].Value.ToString(), out x);
-                    ssqx += x * x;
-                    sx += x;
-                    popolazione++;
-                    if (x < results.Min)
-                        results.Min = x;
-                    if (x > results.Max)
-                        results.Max = x;
+                    if (this[i, j].Value != null)
+                    {
+                        double.TryParse(this[i, j].Value.ToString(), out x);
+                        ssqx += x * x;
+                        sx += x;
+                        popolazione++;
+                        if (x < results.Min)
+                            results.Min = x;
+                        if (x > results.Max)
+                            results.Max = x;
+                    }
                 }
                 if (popolazione > 0)
                 {
