@@ -258,40 +258,22 @@ namespace Campionamento
         }
         private void btnScegliColonnaClassiPopolazioneOk_Click(object sender, EventArgs e)
         {
-            bool correct = txtNClassi.Text != string.Empty && txtXMax.Text != string.Empty && txtXMin.Text != string.Empty
-                         && txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid;
-            if (correct && cmbScegliColonnaPopolazione.Text!=string.Empty)
+            bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbScegliColonnaPopolazione.Text != string.Empty;
+            if (correct)
             {
-                List<double> temp = new List<double>();
-                /*var v = gridInList.Select(s => s.HeaderCellText == cmbScegliColonnaPopolazione.Text).Cast<myGrid.GridInList>().First();*/
-                
-                myGrid.GridInList tempClass=new myGrid.GridInList();
-                foreach (myGrid.GridInList v in gridInList)
-                {
-                    if (v.HeaderCellText == cmbScegliColonnaPopolazione.Text)
+                myGrid.GridInList tempGridInList = new myGrid.GridInList();
+                foreach (myGrid.GridInList glt in gridInList)
+                    if (glt.Equals(cmbScegliColonnaPopolazione.Text))
                     {
-                        tempClass = v;
+                        tempGridInList = glt;
                         break;
                     }
-                }
-                
-                for (int i = 0; i < tempClass.ValueCells.Count; i++)
-                    temp.Add(Convert.ToDouble(tempClass.ValueCells[i]));
-                var sorted = from var in temp
-                             orderby var ascending
-                             select var;
-                double nClassi=Convert.ToInt32(txtNClassi.Text);
-                for (int i = 0; i < nClassi; i++)
-                {
-                    double min = Convert.ToDouble(txtXMin.Text);
-                    double max = Convert.ToDouble(txtXMax.Text);
-                    IEnumerable<double> tempIE = temp.Where(s => (s > (min + nClassi * 1) && (s < (max + nClassi * i))));
-                    dgvClassiPopolazione.RowCount++;
-                    dgvClassiPopolazione[0, dgvClassiPopolazione.RowCount - 1].Value = min + i * nClassi;
-                    dgvClassiPopolazione[1, dgvClassiPopolazione.RowCount - 1].Value = (max + i * nClassi < max) ? max + i * nClassi : max;
-                    dgvClassiPopolazione[2, dgvClassiPopolazione.RowCount - 1].Value = IEnumerableLenght(tempIE);
-                }
-                
+                List<double> temp = new List<double>();
+                for (int i = 0; i < tempGridInList.ValueCells.Count; i++)
+                    temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
+                temp.Sort();
+                double min = Convert.ToDouble(txtXMin.Text);
+                double max = Convert.ToDouble(txtXMax.Text);
             }
         }
         private int IEnumerableLenght(IEnumerable<double> ie)
