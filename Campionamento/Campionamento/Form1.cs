@@ -261,10 +261,10 @@ namespace Campionamento
             bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbScegliColonnaPopolazione.Text != string.Empty;
             if (correct)
             {
-                double xmin = Convert.ToDouble(txtXMin.Text);
-                double xmax = Convert.ToDouble(txtXMax.Text);
+                double min = Convert.ToDouble(txtXMin.Text);
+                double max = Convert.ToDouble(txtXMax.Text);
                 int nClassi = Convert.ToInt32(txtNClassi.Text);
-                if (xmin < xmax && xmin > 0 && xmax <= dgvMain.RowCount - 1)
+                if (min < max && min > 0 && max <= dgvMain.RowCount - 1)
                 {
                     myGrid.GridInList tempGridInList = new myGrid.GridInList();
                     foreach (myGrid.GridInList glt in gridInList)
@@ -278,7 +278,23 @@ namespace Campionamento
                         temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
                     temp.Sort();
                 }
+                else
+                {
+                    string formatError = string.Format("Valore min: {0} \n\r Valore max: {1} \n\r Valore min<max: {2}", min > 0 ? min.ToString() + " Corretto" : min.ToString() + " Non corretto", max <= dgvMain.RowCount ? max.ToString() + " Corretto" : max.ToString() + " Non corretto", min < max ? " Corretto" : " Non corretto");
+                    int n=countWord(formatError, "Non corretto");
+                    formatError = string.Format("Error{0} dat{1} in input: \n\r {2}", n > 1 ? +'i' : 'e', n > 1 ? 'i' : 'o', formatError);
+                    Error error = new Error(formatError);
+                    error.ShowDialog();
+                }
             }
+        }
+        public int countWord(string text, string word)
+        {
+            string[] source = text.Split(new char[] { '.', '?', '!','\n',';', ':', ',' }, StringSplitOptions.None);
+            var v = from s in source
+                    where s.ToLowerInvariant().Contains(word.ToLowerInvariant())
+                    select s;
+            return v.Count();
         }
     }
 }
