@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.OleDb;
 namespace myGrid
 {
-    class AdoNet
+    public class AdoNet
     {
         private static string cnString;
         public OleDbConnection cn;

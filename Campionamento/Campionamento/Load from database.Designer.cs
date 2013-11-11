@@ -31,10 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
-            this.txtTableName = new System.Windows.Forms.TextBox();
             this.btnLoadFromDb = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.cmbTableName = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -61,13 +61,6 @@
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(231, 20);
             this.txtPath.TabIndex = 2;
-            // 
-            // txtTableName
-            // 
-            this.txtTableName.Location = new System.Drawing.Point(85, 55);
-            this.txtTableName.Name = "txtTableName";
-            this.txtTableName.Size = new System.Drawing.Size(231, 20);
-            this.txtTableName.TabIndex = 3;
             // 
             // btnLoadFromDb
             // 
@@ -99,15 +92,24 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // cmbTableName
+            // 
+            this.cmbTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTableName.FormattingEnabled = true;
+            this.cmbTableName.Location = new System.Drawing.Point(85, 55);
+            this.cmbTableName.Name = "cmbTableName";
+            this.cmbTableName.Size = new System.Drawing.Size(231, 21);
+            this.cmbTableName.TabIndex = 7;
+            // 
             // Load_from_database
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 145);
+            this.Controls.Add(this.cmbTableName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnLoadFromDb);
-            this.Controls.Add(this.txtTableName);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,6 +118,7 @@
             this.MinimizeBox = false;
             this.Name = "Load_from_database";
             this.Text = "Load from database";
+            this.Load += new System.EventHandler(this.Load_from_database_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,9 +129,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPath;
-        private System.Windows.Forms.TextBox txtTableName;
         private System.Windows.Forms.Button btnLoadFromDb;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ComboBox cmbTableName;
     }
 }
