@@ -43,6 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdoNet.cs" />
+    <Compile Include="Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
+    </Compile>
     <Compile Include="GridInList.cs" />
     <Compile Include="myGrid.cs">
       <SubType>Component</SubType>
@@ -54,6 +60,11 @@
     <Compile Include="Values.cs" />
     <Compile Include="ValuesMultiExtracions.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

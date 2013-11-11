@@ -135,36 +135,6 @@
   <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="txtNClassi.Pattern" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
-        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAkU3lzdGVtLlRleHQuUmVndWxh
-        ckV4cHJlc3Npb25zLlJlZ2V4AwAAAAdwYXR0ZXJuB29wdGlvbnMMbWF0Y2hUaW1lb3V0AQQAK1N5c3Rl
-        bS5UZXh0LlJlZ3VsYXJFeHByZXNzaW9ucy5SZWdleE9wdGlvbnMCAAAACQIAAAAGAwAAABleWzAtOV17
-        MCwyfVwuP1swLTldezAsMn0kBfz///8rU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zLlJlZ2V4
-        T3B0aW9ucwEAAAAHdmFsdWVfXwAIAgAAAAAAAADw2P///////ws=
-</value>
-  </data>
-  <data name="txtXMax.Pattern" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
-        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAkU3lzdGVtLlRleHQuUmVndWxh
-        ckV4cHJlc3Npb25zLlJlZ2V4AwAAAAdwYXR0ZXJuB29wdGlvbnMMbWF0Y2hUaW1lb3V0AQQAK1N5c3Rl
-        bS5UZXh0LlJlZ3VsYXJFeHByZXNzaW9ucy5SZWdleE9wdGlvbnMCAAAACQIAAAAGAwAAABleWzAtOV17
-        MCwyfVwuP1swLTldezAsMn0kBfz///8rU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zLlJlZ2V4
-        T3B0aW9ucwEAAAAHdmFsdWVfXwAIAgAAAAAAAADw2P///////ws=
-</value>
-  </data>
-  <data name="txtXMin.Pattern" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
-        cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAkU3lzdGVtLlRleHQuUmVndWxh
-        ckV4cHJlc3Npb25zLlJlZ2V4AwAAAAdwYXR0ZXJuB29wdGlvbnMMbWF0Y2hUaW1lb3V0AQQAK1N5c3Rl
-        bS5UZXh0LlJlZ3VsYXJFeHByZXNzaW9ucy5SZWdleE9wdGlvbnMCAAAACQIAAAAGAwAAABleWzAtOV17
-        MCwyfVwuP1swLTldezAsMn0kBfz///8rU3lzdGVtLlRleHQuUmVndWxhckV4cHJlc3Npb25zLlJlZ2V4
-        T3B0aW9ucwEAAAAHdmFsdWVfXwAIAgAAAAAAAADw2P///////ws=
-</value>
-  </data>
   <metadata name="tmrControl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

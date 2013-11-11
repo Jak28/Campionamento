@@ -61,7 +61,8 @@ namespace myGrid
                             error = error + '\n' + string.Format("Error at column {0} row {1} value: {2}", i, j, this[i, j].Value.ToString());
             if (error != string.Empty)
             {
-                MessageBox.Show(String.Format("Error{0} in table at:\n {1}", (counterChar(error, '\n') == 1) ? "s " : " ", error), "Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Error errorForm = new Error(String.Format("Error{0} in table at:\n {1}", (counterChar(error, '\n') == 1) ? "s " : " ", error));
+                errorForm.ShowDialog();
                 return false;
             }
                 return true;

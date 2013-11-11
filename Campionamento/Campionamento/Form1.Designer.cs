@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabCampionamento = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
             this.grpMainTab = new System.Windows.Forms.GroupBox();
@@ -40,6 +39,7 @@
             this.btnLoadFromCSV = new System.Windows.Forms.Button();
             this.btnLoadFromDB = new System.Windows.Forms.Button();
             this.btnLoadFromXls = new System.Windows.Forms.Button();
+            this.dgvMain = new myGrid.myGrid();
             this.tabEstrazioni = new System.Windows.Forms.TabPage();
             this.grpEstrazioni = new System.Windows.Forms.GroupBox();
             this.btnMostraEstrazioniDati = new System.Windows.Forms.Button();
@@ -51,6 +51,7 @@
             this.rdbReimmissione = new System.Windows.Forms.RadioButton();
             this.pickUpEstrazione = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.dgvEstrazioni = new myGrid.myGrid();
             this.tabEstrazioniMultiple = new System.Windows.Forms.TabPage();
             this.grpEstrazioniMultiple = new System.Windows.Forms.GroupBox();
             this.btnMostraDati = new System.Windows.Forms.Button();
@@ -66,8 +67,21 @@
             this.rdbReimmissioneEstrazioneMultiple = new System.Windows.Forms.RadioButton();
             this.pickUpPopolazioneEstrazioniMultiple = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
+            this.dgvEstrazioniMultiple = new myGrid.myGrid();
             this.tabClassi = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.myGrid1 = new myGrid.myGrid();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvClassiPopolazione = new myGrid.myGrid();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnScegliColonnaClassiPopolazioneOk = new System.Windows.Forms.Button();
             this.cmbScegliColonnaPopolazione = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -79,43 +93,28 @@
             this.txtXMin = new RegexTextBox.RegexTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tmrControl = new System.Windows.Forms.Timer(this.components);
-            this.dgvMain = new myGrid.myGrid();
-            this.dgvEstrazioni = new myGrid.myGrid();
-            this.dgvEstrazioniMultiple = new myGrid.myGrid();
-            this.dgvClassiPopolazione = new myGrid.myGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.myGrid1 = new myGrid.myGrid();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.tabCampionamento.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.grpMainTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.tabEstrazioni.SuspendLayout();
             this.grpEstrazioni.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioni)).BeginInit();
             this.tabEstrazioniMultiple.SuspendLayout();
             this.grpEstrazioniMultiple.SuspendLayout();
             this.grpEstrazioneMultipla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).BeginInit();
-            this.tabClassi.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).BeginInit();
+            this.tabClassi.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid1)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabCampionamento
@@ -222,6 +221,15 @@
             this.btnLoadFromXls.TabIndex = 3;
             this.btnLoadFromXls.Text = "Load from xls";
             this.btnLoadFromXls.UseVisualStyleBackColor = true;
+            // 
+            // dgvMain
+            // 
+            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMain.Location = new System.Drawing.Point(5, 6);
+            this.dgvMain.Name = "dgvMain";
+            this.dgvMain.ReadOnly = true;
+            this.dgvMain.Size = new System.Drawing.Size(263, 350);
+            this.dgvMain.TabIndex = 0;
             // 
             // tabEstrazioni
             // 
@@ -347,6 +355,15 @@
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Popolazione";
+            // 
+            // dgvEstrazioni
+            // 
+            this.dgvEstrazioni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstrazioni.Location = new System.Drawing.Point(6, 6);
+            this.dgvEstrazioni.Name = "dgvEstrazioni";
+            this.dgvEstrazioni.ReadOnly = true;
+            this.dgvEstrazioni.Size = new System.Drawing.Size(240, 350);
+            this.dgvEstrazioni.TabIndex = 2;
             // 
             // tabEstrazioniMultiple
             // 
@@ -511,6 +528,15 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Popolazione";
             // 
+            // dgvEstrazioniMultiple
+            // 
+            this.dgvEstrazioniMultiple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstrazioniMultiple.Location = new System.Drawing.Point(6, 6);
+            this.dgvEstrazioniMultiple.Name = "dgvEstrazioniMultiple";
+            this.dgvEstrazioniMultiple.ReadOnly = true;
+            this.dgvEstrazioniMultiple.Size = new System.Drawing.Size(240, 350);
+            this.dgvEstrazioniMultiple.TabIndex = 3;
+            // 
             // tabClassi
             // 
             this.tabClassi.Controls.Add(this.groupBox5);
@@ -523,173 +549,6 @@
             this.tabClassi.TabIndex = 3;
             this.tabClassi.Text = "Classi";
             this.tabClassi.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dgvClassiPopolazione);
-            this.groupBox4.Controls.Add(this.btnScegliColonnaClassiPopolazioneOk);
-            this.groupBox4.Controls.Add(this.cmbScegliColonnaPopolazione);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Location = new System.Drawing.Point(6, 68);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(205, 288);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Classi popolazione";
-            // 
-            // btnScegliColonnaClassiPopolazioneOk
-            // 
-            this.btnScegliColonnaClassiPopolazioneOk.Location = new System.Drawing.Point(84, 55);
-            this.btnScegliColonnaClassiPopolazioneOk.Name = "btnScegliColonnaClassiPopolazioneOk";
-            this.btnScegliColonnaClassiPopolazioneOk.Size = new System.Drawing.Size(115, 23);
-            this.btnScegliColonnaClassiPopolazioneOk.TabIndex = 2;
-            this.btnScegliColonnaClassiPopolazioneOk.Text = "Ok";
-            this.btnScegliColonnaClassiPopolazioneOk.UseVisualStyleBackColor = true;
-            this.btnScegliColonnaClassiPopolazioneOk.Click += new System.EventHandler(this.btnScegliColonnaClassiPopolazioneOk_Click);
-            // 
-            // cmbScegliColonnaPopolazione
-            // 
-            this.cmbScegliColonnaPopolazione.FormattingEnabled = true;
-            this.cmbScegliColonnaPopolazione.Location = new System.Drawing.Point(84, 23);
-            this.cmbScegliColonnaPopolazione.Name = "cmbScegliColonnaPopolazione";
-            this.cmbScegliColonnaPopolazione.Size = new System.Drawing.Size(115, 21);
-            this.cmbScegliColonnaPopolazione.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Scegli colonna";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtNClassi);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.txtXMax);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtXMin);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(450, 56);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Divisione in classi";
-            // 
-            // txtNClassi
-            // 
-            this.txtNClassi.CheckTextBox = true;
-            this.txtNClassi.Location = new System.Drawing.Point(344, 22);
-            this.txtNClassi.Name = "txtNClassi";
-            this.txtNClassi.Pattern = ((System.Text.RegularExpressions.Regex)(resources.GetObject("txtNClassi.Pattern")));
-            this.txtNClassi.Size = new System.Drawing.Size(100, 20);
-            this.txtNClassi.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(276, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Num classi";
-            // 
-            // txtXMax
-            // 
-            this.txtXMax.CheckTextBox = true;
-            this.txtXMax.Location = new System.Drawing.Point(170, 22);
-            this.txtXMax.Name = "txtXMax";
-            this.txtXMax.Pattern = ((System.Text.RegularExpressions.Regex)(resources.GetObject("txtXMax.Pattern")));
-            this.txtXMax.Size = new System.Drawing.Size(100, 20);
-            this.txtXMax.TabIndex = 3;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(140, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(27, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Max";
-            // 
-            // txtXMin
-            // 
-            this.txtXMin.CheckTextBox = true;
-            this.txtXMin.Location = new System.Drawing.Point(36, 22);
-            this.txtXMin.Name = "txtXMin";
-            this.txtXMin.Pattern = ((System.Text.RegularExpressions.Regex)(resources.GetObject("txtXMin.Pattern")));
-            this.txtXMin.Size = new System.Drawing.Size(100, 20);
-            this.txtXMin.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Min";
-            // 
-            // tmrControl
-            // 
-            this.tmrControl.Tick += new System.EventHandler(this.tmrControl_Tick);
-            // 
-            // dgvMain
-            // 
-            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMain.Location = new System.Drawing.Point(5, 6);
-            this.dgvMain.Name = "dgvMain";
-            this.dgvMain.ReadOnly = true;
-            this.dgvMain.Size = new System.Drawing.Size(263, 350);
-            this.dgvMain.TabIndex = 0;
-            // 
-            // dgvEstrazioni
-            // 
-            this.dgvEstrazioni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstrazioni.Location = new System.Drawing.Point(6, 6);
-            this.dgvEstrazioni.Name = "dgvEstrazioni";
-            this.dgvEstrazioni.ReadOnly = true;
-            this.dgvEstrazioni.Size = new System.Drawing.Size(240, 350);
-            this.dgvEstrazioni.TabIndex = 2;
-            // 
-            // dgvEstrazioniMultiple
-            // 
-            this.dgvEstrazioniMultiple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEstrazioniMultiple.Location = new System.Drawing.Point(6, 6);
-            this.dgvEstrazioniMultiple.Name = "dgvEstrazioniMultiple";
-            this.dgvEstrazioniMultiple.ReadOnly = true;
-            this.dgvEstrazioniMultiple.Size = new System.Drawing.Size(240, 350);
-            this.dgvEstrazioniMultiple.TabIndex = 3;
-            // 
-            // dgvClassiPopolazione
-            // 
-            this.dgvClassiPopolazione.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClassiPopolazione.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dgvClassiPopolazione.Location = new System.Drawing.Point(6, 84);
-            this.dgvClassiPopolazione.Name = "dgvClassiPopolazione";
-            this.dgvClassiPopolazione.Size = new System.Drawing.Size(193, 198);
-            this.dgvClassiPopolazione.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Min";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Max";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Frequenza";
-            this.Column3.Name = "Column3";
             // 
             // groupBox5
             // 
@@ -757,6 +616,146 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Scegli colonna";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dgvClassiPopolazione);
+            this.groupBox4.Controls.Add(this.btnScegliColonnaClassiPopolazioneOk);
+            this.groupBox4.Controls.Add(this.cmbScegliColonnaPopolazione);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Location = new System.Drawing.Point(6, 68);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(205, 288);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Classi popolazione";
+            // 
+            // dgvClassiPopolazione
+            // 
+            this.dgvClassiPopolazione.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClassiPopolazione.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dgvClassiPopolazione.Location = new System.Drawing.Point(6, 84);
+            this.dgvClassiPopolazione.Name = "dgvClassiPopolazione";
+            this.dgvClassiPopolazione.Size = new System.Drawing.Size(193, 198);
+            this.dgvClassiPopolazione.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Min";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Max";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Frequenza";
+            this.Column3.Name = "Column3";
+            // 
+            // btnScegliColonnaClassiPopolazioneOk
+            // 
+            this.btnScegliColonnaClassiPopolazioneOk.Location = new System.Drawing.Point(84, 55);
+            this.btnScegliColonnaClassiPopolazioneOk.Name = "btnScegliColonnaClassiPopolazioneOk";
+            this.btnScegliColonnaClassiPopolazioneOk.Size = new System.Drawing.Size(115, 23);
+            this.btnScegliColonnaClassiPopolazioneOk.TabIndex = 2;
+            this.btnScegliColonnaClassiPopolazioneOk.Text = "Ok";
+            this.btnScegliColonnaClassiPopolazioneOk.UseVisualStyleBackColor = true;
+            this.btnScegliColonnaClassiPopolazioneOk.Click += new System.EventHandler(this.btnScegliColonnaClassiPopolazioneOk_Click);
+            // 
+            // cmbScegliColonnaPopolazione
+            // 
+            this.cmbScegliColonnaPopolazione.FormattingEnabled = true;
+            this.cmbScegliColonnaPopolazione.Location = new System.Drawing.Point(84, 23);
+            this.cmbScegliColonnaPopolazione.Name = "cmbScegliColonnaPopolazione";
+            this.cmbScegliColonnaPopolazione.Size = new System.Drawing.Size(115, 21);
+            this.cmbScegliColonnaPopolazione.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Scegli colonna";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtNClassi);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtXMax);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtXMin);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(450, 56);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Divisione in classi";
+            // 
+            // txtNClassi
+            // 
+            this.txtNClassi.CheckTextBox = true;
+            this.txtNClassi.Location = new System.Drawing.Point(344, 22);
+            this.txtNClassi.Name = "txtNClassi";
+            this.txtNClassi.Pattern = "^[0-9]{1,}?$";
+            this.txtNClassi.Size = new System.Drawing.Size(100, 20);
+            this.txtNClassi.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(276, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Num classi";
+            // 
+            // txtXMax
+            // 
+            this.txtXMax.CheckTextBox = true;
+            this.txtXMax.Location = new System.Drawing.Point(170, 22);
+            this.txtXMax.Name = "txtXMax";
+            this.txtXMax.Pattern = "^[0-9]{1,}([.,][0-9]{1,})?$";
+            this.txtXMax.Size = new System.Drawing.Size(100, 20);
+            this.txtXMax.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(140, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Max";
+            // 
+            // txtXMin
+            // 
+            this.txtXMin.CheckTextBox = true;
+            this.txtXMin.Location = new System.Drawing.Point(36, 22);
+            this.txtXMin.Name = "txtXMin";
+            this.txtXMin.Pattern = "^[0-9]{1,}([.,][0-9]{1,})?$";
+            this.txtXMin.Size = new System.Drawing.Size(100, 20);
+            this.txtXMin.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(24, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Min";
+            // 
+            // tmrControl
+            // 
+            this.tmrControl.Tick += new System.EventHandler(this.tmrControl_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,12 +770,14 @@
             this.grpMainTab.ResumeLayout(false);
             this.grpMainTab.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.tabEstrazioni.ResumeLayout(false);
             this.grpEstrazioni.ResumeLayout(false);
             this.grpEstrazioni.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioni)).EndInit();
             this.tabEstrazioniMultiple.ResumeLayout(false);
             this.grpEstrazioniMultiple.ResumeLayout(false);
             this.grpEstrazioniMultiple.PerformLayout();
@@ -784,18 +785,16 @@
             this.grpEstrazioneMultipla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).EndInit();
-            this.tabClassi.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).EndInit();
+            this.tabClassi.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -137,7 +137,7 @@ namespace Campionamento
             if (rdbReimmissioneEstrazioneMultiple.Checked)
                 pickUpPopolazioneEstrazioniMultiple.Maximum = decimal.MaxValue;
             else
-                pickUpPopolazioneEstrazioniMultiple.Maximum = (decimal)dgvMain.RowCount - 1;
+                pickUpPopolazioneEstrazioniMultiple.Maximum = (decimal)dgvMain.RowCount + ((dgvMain.RowCount == 0) ? 0 : -1);
         }
         private void btnEstrazioneMultipla_Click(object sender, EventArgs e)
         {
@@ -261,19 +261,23 @@ namespace Campionamento
             bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbScegliColonnaPopolazione.Text != string.Empty;
             if (correct)
             {
-
-                myGrid.GridInList tempGridInList = new myGrid.GridInList();
-                foreach (myGrid.GridInList glt in gridInList)
-                    if (glt.Equals(cmbScegliColonnaPopolazione.Text))
-                    {
-                        tempGridInList = glt;
-                        break;
-                    }
-                List<double> temp = new List<double>();
-                for (int i = 0; i < tempGridInList.ValueCells.Count; i++)
-                    temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
-                temp.Sort();
-                
+                double xmin = Convert.ToDouble(txtXMin.Text);
+                double xmax = Convert.ToDouble(txtXMax.Text);
+                int nClassi = Convert.ToInt32(txtNClassi.Text);
+                if (xmin < xmax && xmin > 0 && xmax <= dgvMain.RowCount - 1)
+                {
+                    myGrid.GridInList tempGridInList = new myGrid.GridInList();
+                    foreach (myGrid.GridInList glt in gridInList)
+                        if (glt.Equals(cmbScegliColonnaPopolazione.Text))
+                        {
+                            tempGridInList = glt;
+                            break;
+                        }
+                    List<double> temp = new List<double>();
+                    for (int i = 0; i < tempGridInList.ValueCells.Count; i++)
+                        temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
+                    temp.Sort();
+                }
             }
         }
     }

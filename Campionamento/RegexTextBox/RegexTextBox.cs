@@ -16,11 +16,11 @@ namespace RegexTextBox
         {
             InitializeComponent();
         }
-        private Regex _pattern = new Regex(@"^[0-9]{0,2}\.?[0-9]{0,2}$");
-        public Regex Pattern
+
+        public String Pattern
         {
-            get { return _pattern; }
-            set { _pattern = value; }
+            get;
+            set;
         }
         private bool _checkTextBox = true;
         public bool CheckTextBox
@@ -35,7 +35,8 @@ namespace RegexTextBox
         }
         private void RegexTextBox_Leave(object sender, EventArgs e)
         {
-            this._isValid = ((bool)(this.Text != string.Empty)) ? ((this.CheckTextBox) ? ((this.Pattern.IsMatch(this.Text) ? true : false)) : true) : false;
+            Regex regex = new Regex(Pattern);
+            this._isValid = ((bool)(this.Text != string.Empty)) ? ((this.CheckTextBox) ? ((regex.IsMatch(this.Text) ? true : false)) : true) : false;
         }
     }
 }
