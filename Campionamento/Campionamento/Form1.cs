@@ -261,6 +261,7 @@ namespace Campionamento
             bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbScegliColonnaPopolazione.Text != string.Empty;
             if (correct)
             {
+
                 myGrid.GridInList tempGridInList = new myGrid.GridInList();
                 foreach (myGrid.GridInList glt in gridInList)
                     if (glt.Equals(cmbScegliColonnaPopolazione.Text))
@@ -272,16 +273,8 @@ namespace Campionamento
                 for (int i = 0; i < tempGridInList.ValueCells.Count; i++)
                     temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
                 temp.Sort();
-                double min = Convert.ToDouble(txtXMin.Text);
-                double max = Convert.ToDouble(txtXMax.Text);
+                
             }
-        }
-        private int IEnumerableLenght(IEnumerable<double> ie)
-        {
-            int count = 0;
-            foreach (var d in ie)
-                count++;
-            return count;
         }
     }
 }
