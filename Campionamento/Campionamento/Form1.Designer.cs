@@ -739,7 +739,7 @@
             this.txtPopolazioneEstrazioniMultiple.CheckTextBox = true;
             this.txtPopolazioneEstrazioniMultiple.Location = new System.Drawing.Point(77, 28);
             this.txtPopolazioneEstrazioniMultiple.Name = "txtPopolazioneEstrazioniMultiple";
-            this.txtPopolazioneEstrazioniMultiple.Pattern = null;
+            this.txtPopolazioneEstrazioniMultiple.Pattern = "^[0-9]{0,}$";
             this.txtPopolazioneEstrazioniMultiple.Size = new System.Drawing.Size(117, 20);
             this.txtPopolazioneEstrazioniMultiple.TabIndex = 7;
             // 
@@ -748,7 +748,7 @@
             this.txtNumeroGruppi.CheckTextBox = true;
             this.txtNumeroGruppi.Location = new System.Drawing.Point(76, 59);
             this.txtNumeroGruppi.Name = "txtNumeroGruppi";
-            this.txtNumeroGruppi.Pattern = null;
+            this.txtNumeroGruppi.Pattern = "^[0-9]{0,}$";
             this.txtNumeroGruppi.Size = new System.Drawing.Size(118, 20);
             this.txtNumeroGruppi.TabIndex = 8;
             // 
