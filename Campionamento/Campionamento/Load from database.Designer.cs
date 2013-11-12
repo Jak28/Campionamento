@@ -59,6 +59,7 @@
             // 
             this.txtPath.Location = new System.Drawing.Point(85, 24);
             this.txtPath.Name = "txtPath";
+            this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(231, 20);
             this.txtPath.TabIndex = 2;
             // 

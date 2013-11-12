@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ExcelLibrary.SpreadSheet;
 namespace myGrid
 {
     public partial class myGrid: System.Windows.Forms.DataGridView
@@ -24,6 +24,7 @@ namespace myGrid
                 return;
             using (System.IO.StreamReader sr = new System.IO.StreamReader(filename))
             {
+                this.DataSource = null;
                 this.Clear();
                 string[] tmp = sr.ReadLine().Split(';');
                 this.ColumnCount=tmp.Length;
@@ -35,8 +36,36 @@ namespace myGrid
             if (!checkGridIsCorrect())
                 Clear();
         }
-        public void loadFromDB(string filename,string nomeTabella)
+        public void loadFromXls(string filename, string SheetName)
         {
+            this.DataSource = null;
+            this.Columns.Clear();
+            Workbook workbook = new Workbook();
+            workbook = Workbook.Load(filename);
+            Worksheet worksheet = null;
+            bool find=true;
+            for (int i = 0; i < workbook.Worksheets.Count && find; i++)
+                if (workbook.Worksheets[i].Name.Equals(SheetName))
+                {
+                    worksheet = workbook.Worksheets[i];
+                    find = false;
+                }
+            for (int i = 0; i <= worksheet.Cells.LastColIndex; i++)
+                this.Columns.Add(string.Format("Column{0}", i.ToString()), worksheet.Cells[0, i].StringValue);
+            for (int i = 0; i < worksheet.Cells.Rows.Count; i++)
+            {
+                    this.Rows.Add();
+                for (int j = 0; j <= worksheet.Cells.LastColIndex; j++)
+                    if (i != 0)
+                        this.Rows[i].Cells[j].Value = worksheet.Cells[i, j].StringValue;
+            }
+            this.Rows.RemoveAt(0);
+            if (!checkGridIsCorrect())
+                Clear();
+        }
+        public void loadFromDB(string filename, string nomeTabella)
+        {
+            this.Clear();
             AdoNet ado = new AdoNet(filename);
             string query = string.Format("SELECT * FROM {0}", nomeTabella);
             ado.eseguiQuery(query, CommandType.Text);

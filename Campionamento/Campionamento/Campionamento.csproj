@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelLibrary">
+      <HintPath>..\..\..\..\..\Downloads\Campionamento\Campionamento\bin\Debug\ExcelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +66,12 @@
     <Compile Include="Load from database.Designer.cs">
       <DependentUpon>Load from database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Load from xls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Load from xls.Designer.cs">
+      <DependentUpon>Load from xls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Error.resx">
@@ -73,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Load from database.resx">
       <DependentUpon>Load from database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Load from xls.resx">
+      <DependentUpon>Load from xls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

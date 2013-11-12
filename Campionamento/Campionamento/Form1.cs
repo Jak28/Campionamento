@@ -26,7 +26,7 @@ namespace Campionamento
         private void btnLoadFromCSV_Click(object sender, EventArgs e)
         {
             OpenFileDialog opendlg = new OpenFileDialog();
-            opendlg.Filter = "CSV Files (.csv)|*.csv|All Files (*.*)|*.*";
+            opendlg.Filter = "CSV Files (.csv)|*.csv";
             DialogResult ris = opendlg.ShowDialog();
             if (ris == DialogResult.OK)
             {
@@ -37,6 +37,8 @@ namespace Campionamento
                     loadComboBox();
                     enableSettingsMainTab();
                 }
+                else
+                { /*TODO*/}
             }
         }
         private void enableSettingsMainTab()
@@ -56,12 +58,18 @@ namespace Campionamento
             DialogResult ris = load.ShowDialog();
             if (ris == DialogResult.OK)
             {
-                dgvMain.loadFromDB(load.PathDB, load.Table);
-                if (dgvMain.ColumnCount > 0 && dgvMain.RowCount > 0){
-                    valoriGrigliaMain = dgvMain.getValues();
-                    loadComboBox();
-                    enableSettingsMainTab();
+                if (load.InputCorrect)
+                {
+                    dgvMain.loadFromDB(load.PathDB, load.Table);
+                    if (dgvMain.ColumnCount > 0 && dgvMain.RowCount > 0)
+                    {
+                        valoriGrigliaMain = dgvMain.getValues();
+                        loadComboBox();
+                        enableSettingsMainTab();
+                    }
                 }
+                else
+                { /*TODO*/}
             }
         }
         private void loadComboBox()
@@ -293,6 +301,26 @@ namespace Campionamento
                     where s.ToLowerInvariant().Contains(word.ToLowerInvariant())
                     select s;
             return v.Count();
+        }
+
+        private void btnLoadFromXls_Click(object sender, EventArgs e)
+        {
+            Load_from_xls xls = new Load_from_xls();
+            if (DialogResult.OK == xls.ShowDialog())
+            {
+                if (xls.InputCorrect)
+                {
+                    dgvMain.loadFromXls(xls.GetFileNameXls, xls.GetSheetSelected);
+                    if (dgvMain.ColumnCount > 0 && dgvMain.RowCount > 0)
+                    {
+                        valoriGrigliaMain = dgvMain.getValues();
+                        loadComboBox();
+                        enableSettingsMainTab();
+                    }
+                }
+                else
+                {/*TODO*/ }
+            }
         }
     }
 }

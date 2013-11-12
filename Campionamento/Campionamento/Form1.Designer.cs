@@ -219,6 +219,7 @@
             this.btnLoadFromXls.TabIndex = 3;
             this.btnLoadFromXls.Text = "Load from xls";
             this.btnLoadFromXls.UseVisualStyleBackColor = true;
+            this.btnLoadFromXls.Click += new System.EventHandler(this.btnLoadFromXls_Click);
             // 
             // dgvMain
             // 

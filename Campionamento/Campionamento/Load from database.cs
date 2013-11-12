@@ -19,14 +19,16 @@ namespace Campionamento
         }
         public string PathDB { get { return txtPath.Text; } }
         public string Table { get { return cmbTableName.Text; } }
+        public bool InputCorrect { get; set; }
         private void btnLoadFromDb_Click(object sender, EventArgs e)
         {
             cmbTableName.Items.Clear();
              OpenFileDialog opendlg = new OpenFileDialog();
-             opendlg.Filter = "MDB Files (.mdb)|*.mdb|ACCDB Files (.accdb)|*.accdb|All Files (*.*)|*.*";
+             opendlg.Filter = "MDB Files (.mdb)|*.mdb|ACCDB Files (.accdb)|*.accdb";
             DialogResult ris = opendlg.ShowDialog();
             if (ris == DialogResult.OK)
             {
+                cmbTableName.Items.Clear();
                 txtPath.Text = opendlg.FileName;
                 if (!System.IO.File.Exists(txtPath.Text))
                     return;
@@ -59,7 +61,7 @@ namespace Campionamento
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-
+            InputCorrect = (txtPath.Text != string.Empty && cmbTableName.Text != string.Empty) ? true : false;
         }
     }
 }
