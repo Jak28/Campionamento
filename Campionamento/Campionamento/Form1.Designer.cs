@@ -46,10 +46,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbDataEstrazioni = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtEstrazione = new RegexTextBox.RegexTextBox();
             this.btnEstrai = new System.Windows.Forms.Button();
             this.rdbNoReimmissione = new System.Windows.Forms.RadioButton();
             this.rdbReimmissione = new System.Windows.Forms.RadioButton();
-            this.pickUpEstrazione = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvEstrazioni = new myGrid.myGrid();
             this.tabEstrazioniMultiple = new System.Windows.Forms.TabPage();
@@ -60,12 +60,10 @@
             this.cmbSceltaNumeroEstrazione = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.grpEstrazioneMultipla = new System.Windows.Forms.GroupBox();
-            this.pickUpNumeroCampione = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.btnEstrazioneMultipla = new System.Windows.Forms.Button();
             this.rdbEstrazioniMultipleNoReimmissione = new System.Windows.Forms.RadioButton();
             this.rdbReimmissioneEstrazioneMultiple = new System.Windows.Forms.RadioButton();
-            this.pickUpPopolazioneEstrazioniMultiple = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvEstrazioniMultiple = new myGrid.myGrid();
             this.tabClassi = new System.Windows.Forms.TabPage();
@@ -93,6 +91,8 @@
             this.txtXMin = new RegexTextBox.RegexTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tmrControl = new System.Windows.Forms.Timer(this.components);
+            this.txtPopolazioneEstrazioniMultiple = new RegexTextBox.RegexTextBox();
+            this.txtNumeroGruppi = new RegexTextBox.RegexTextBox();
             this.tabCampionamento.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.grpMainTab.SuspendLayout();
@@ -101,13 +101,10 @@
             this.tabEstrazioni.SuspendLayout();
             this.grpEstrazioni.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioni)).BeginInit();
             this.tabEstrazioniMultiple.SuspendLayout();
             this.grpEstrazioniMultiple.SuspendLayout();
             this.grpEstrazioneMultipla.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).BeginInit();
             this.tabClassi.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -175,6 +172,7 @@
             // 
             // cmbShow
             // 
+            this.cmbShow.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbShow.FormattingEnabled = true;
             this.cmbShow.Location = new System.Drawing.Point(6, 37);
             this.cmbShow.Name = "cmbShow";
@@ -277,6 +275,7 @@
             // 
             // cmbDataEstrazioni
             // 
+            this.cmbDataEstrazioni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDataEstrazioni.FormattingEnabled = true;
             this.cmbDataEstrazioni.Location = new System.Drawing.Point(9, 37);
             this.cmbDataEstrazioni.Name = "cmbDataEstrazioni";
@@ -285,10 +284,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtEstrazione);
             this.groupBox3.Controls.Add(this.btnEstrai);
             this.groupBox3.Controls.Add(this.rdbNoReimmissione);
             this.groupBox3.Controls.Add(this.rdbReimmissione);
-            this.groupBox3.Controls.Add(this.pickUpEstrazione);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(259, 6);
             this.groupBox3.Name = "groupBox3";
@@ -296,6 +295,15 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Estrazione";
+            // 
+            // txtEstrazione
+            // 
+            this.txtEstrazione.CheckTextBox = true;
+            this.txtEstrazione.Location = new System.Drawing.Point(76, 28);
+            this.txtEstrazione.Name = "txtEstrazione";
+            this.txtEstrazione.Pattern = "^[0-9]{0,}$";
+            this.txtEstrazione.Size = new System.Drawing.Size(103, 20);
+            this.txtEstrazione.TabIndex = 5;
             // 
             // btnEstrai
             // 
@@ -329,23 +337,6 @@
             this.rdbReimmissione.Text = "Estrazione con reimmissione";
             this.rdbReimmissione.UseVisualStyleBackColor = true;
             this.rdbReimmissione.CheckedChanged += new System.EventHandler(this.rdbReimmissione_CheckedChanged);
-            // 
-            // pickUpEstrazione
-            // 
-            this.pickUpEstrazione.Location = new System.Drawing.Point(77, 29);
-            this.pickUpEstrazione.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pickUpEstrazione.Name = "pickUpEstrazione";
-            this.pickUpEstrazione.Size = new System.Drawing.Size(120, 20);
-            this.pickUpEstrazione.TabIndex = 1;
-            this.pickUpEstrazione.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label2
             // 
@@ -404,6 +395,7 @@
             // 
             // cmbSceltaColonna
             // 
+            this.cmbSceltaColonna.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSceltaColonna.FormattingEnabled = true;
             this.cmbSceltaColonna.Location = new System.Drawing.Point(12, 102);
             this.cmbSceltaColonna.Name = "cmbSceltaColonna";
@@ -421,6 +413,7 @@
             // 
             // cmbSceltaNumeroEstrazione
             // 
+            this.cmbSceltaNumeroEstrazione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSceltaNumeroEstrazione.FormattingEnabled = true;
             this.cmbSceltaNumeroEstrazione.Location = new System.Drawing.Point(9, 50);
             this.cmbSceltaNumeroEstrazione.Name = "cmbSceltaNumeroEstrazione";
@@ -439,12 +432,12 @@
             // 
             // grpEstrazioneMultipla
             // 
-            this.grpEstrazioneMultipla.Controls.Add(this.pickUpNumeroCampione);
+            this.grpEstrazioneMultipla.Controls.Add(this.txtNumeroGruppi);
+            this.grpEstrazioneMultipla.Controls.Add(this.txtPopolazioneEstrazioniMultiple);
             this.grpEstrazioneMultipla.Controls.Add(this.label5);
             this.grpEstrazioneMultipla.Controls.Add(this.btnEstrazioneMultipla);
             this.grpEstrazioneMultipla.Controls.Add(this.rdbEstrazioniMultipleNoReimmissione);
             this.grpEstrazioneMultipla.Controls.Add(this.rdbReimmissioneEstrazioneMultiple);
-            this.grpEstrazioneMultipla.Controls.Add(this.pickUpPopolazioneEstrazioniMultiple);
             this.grpEstrazioneMultipla.Controls.Add(this.label4);
             this.grpEstrazioneMultipla.Location = new System.Drawing.Point(252, 6);
             this.grpEstrazioneMultipla.Name = "grpEstrazioneMultipla";
@@ -453,27 +446,14 @@
             this.grpEstrazioneMultipla.TabStop = false;
             this.grpEstrazioneMultipla.Text = "Estrazione multipla";
             // 
-            // pickUpNumeroCampione
-            // 
-            this.pickUpNumeroCampione.Location = new System.Drawing.Point(76, 55);
-            this.pickUpNumeroCampione.Name = "pickUpNumeroCampione";
-            this.pickUpNumeroCampione.Size = new System.Drawing.Size(121, 20);
-            this.pickUpNumeroCampione.TabIndex = 6;
-            this.pickUpNumeroCampione.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.pickUpNumeroCampione.ValueChanged += new System.EventHandler(this.pickUpNumeroCampione_ValueChanged);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 62);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "N campione";
+            this.label5.Text = "Num gruppi";
             // 
             // btnEstrazioneMultipla
             // 
@@ -506,18 +486,6 @@
             this.rdbReimmissioneEstrazioneMultiple.TabStop = true;
             this.rdbReimmissioneEstrazioneMultiple.Text = "Estrazione con reimmissione";
             this.rdbReimmissioneEstrazioneMultiple.UseVisualStyleBackColor = true;
-            // 
-            // pickUpPopolazioneEstrazioniMultiple
-            // 
-            this.pickUpPopolazioneEstrazioniMultiple.Location = new System.Drawing.Point(77, 29);
-            this.pickUpPopolazioneEstrazioniMultiple.Name = "pickUpPopolazioneEstrazioniMultiple";
-            this.pickUpPopolazioneEstrazioniMultiple.Size = new System.Drawing.Size(120, 20);
-            this.pickUpPopolazioneEstrazioniMultiple.TabIndex = 1;
-            this.pickUpPopolazioneEstrazioniMultiple.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label4
             // 
@@ -572,6 +540,7 @@
             this.dataGridViewTextBoxColumn3});
             this.myGrid1.Location = new System.Drawing.Point(6, 84);
             this.myGrid1.Name = "myGrid1";
+            this.myGrid1.ReadOnly = true;
             this.myGrid1.Size = new System.Drawing.Size(193, 198);
             this.myGrid1.TabIndex = 3;
             // 
@@ -579,16 +548,19 @@
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Min";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Max";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Frequenza";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // button1
             // 
@@ -601,6 +573,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(84, 23);
             this.comboBox1.Name = "comboBox1";
@@ -638,6 +611,7 @@
             this.Column3});
             this.dgvClassiPopolazione.Location = new System.Drawing.Point(6, 84);
             this.dgvClassiPopolazione.Name = "dgvClassiPopolazione";
+            this.dgvClassiPopolazione.ReadOnly = true;
             this.dgvClassiPopolazione.Size = new System.Drawing.Size(193, 198);
             this.dgvClassiPopolazione.TabIndex = 3;
             // 
@@ -645,16 +619,19 @@
             // 
             this.Column1.HeaderText = "Min";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Max";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Frequenza";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // btnScegliColonnaClassiPopolazioneOk
             // 
@@ -668,6 +645,7 @@
             // 
             // cmbScegliColonnaPopolazione
             // 
+            this.cmbScegliColonnaPopolazione.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbScegliColonnaPopolazione.FormattingEnabled = true;
             this.cmbScegliColonnaPopolazione.Location = new System.Drawing.Point(84, 23);
             this.cmbScegliColonnaPopolazione.Name = "cmbScegliColonnaPopolazione";
@@ -703,7 +681,7 @@
             this.txtNClassi.CheckTextBox = true;
             this.txtNClassi.Location = new System.Drawing.Point(344, 22);
             this.txtNClassi.Name = "txtNClassi";
-            this.txtNClassi.Pattern = "^[0-9]{1,}?$";
+            this.txtNClassi.Pattern = "^[0-9]{0,}$";
             this.txtNClassi.Size = new System.Drawing.Size(100, 20);
             this.txtNClassi.TabIndex = 5;
             // 
@@ -721,7 +699,7 @@
             this.txtXMax.CheckTextBox = true;
             this.txtXMax.Location = new System.Drawing.Point(170, 22);
             this.txtXMax.Name = "txtXMax";
-            this.txtXMax.Pattern = "^[0-9]{1,}([.,][0-9]{1,})?$";
+            this.txtXMax.Pattern = "^[0-9]{0,}$";
             this.txtXMax.Size = new System.Drawing.Size(100, 20);
             this.txtXMax.TabIndex = 3;
             // 
@@ -739,7 +717,7 @@
             this.txtXMin.CheckTextBox = true;
             this.txtXMin.Location = new System.Drawing.Point(36, 22);
             this.txtXMin.Name = "txtXMin";
-            this.txtXMin.Pattern = "^[0-9]{1,}([.,][0-9]{1,})?$";
+            this.txtXMin.Pattern = "^[0-9]{0,}$";
             this.txtXMin.Size = new System.Drawing.Size(100, 20);
             this.txtXMin.TabIndex = 1;
             // 
@@ -755,6 +733,24 @@
             // tmrControl
             // 
             this.tmrControl.Tick += new System.EventHandler(this.tmrControl_Tick);
+            // 
+            // txtPopolazioneEstrazioniMultiple
+            // 
+            this.txtPopolazioneEstrazioniMultiple.CheckTextBox = true;
+            this.txtPopolazioneEstrazioniMultiple.Location = new System.Drawing.Point(77, 28);
+            this.txtPopolazioneEstrazioniMultiple.Name = "txtPopolazioneEstrazioniMultiple";
+            this.txtPopolazioneEstrazioniMultiple.Pattern = null;
+            this.txtPopolazioneEstrazioniMultiple.Size = new System.Drawing.Size(117, 20);
+            this.txtPopolazioneEstrazioniMultiple.TabIndex = 7;
+            // 
+            // txtNumeroGruppi
+            // 
+            this.txtNumeroGruppi.CheckTextBox = true;
+            this.txtNumeroGruppi.Location = new System.Drawing.Point(76, 59);
+            this.txtNumeroGruppi.Name = "txtNumeroGruppi";
+            this.txtNumeroGruppi.Pattern = null;
+            this.txtNumeroGruppi.Size = new System.Drawing.Size(118, 20);
+            this.txtNumeroGruppi.TabIndex = 8;
             // 
             // Form1
             // 
@@ -776,15 +772,12 @@
             this.grpEstrazioni.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pickUpEstrazione)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioni)).EndInit();
             this.tabEstrazioniMultiple.ResumeLayout(false);
             this.grpEstrazioniMultiple.ResumeLayout(false);
             this.grpEstrazioniMultiple.PerformLayout();
             this.grpEstrazioneMultipla.ResumeLayout(false);
             this.grpEstrazioneMultipla.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pickUpNumeroCampione)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pickUpPopolazioneEstrazioniMultiple)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).EndInit();
             this.tabClassi.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -814,7 +807,6 @@
         private System.Windows.Forms.Button btnLoadFromDB;
         private System.Windows.Forms.Button btnLoadFromXls;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown pickUpEstrazione;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rdbNoReimmissione;
         private System.Windows.Forms.RadioButton rdbReimmissione;
@@ -827,12 +819,10 @@
         private System.Windows.Forms.TabPage tabEstrazioniMultiple;
         private System.Windows.Forms.Timer tmrControl;
         private System.Windows.Forms.GroupBox grpEstrazioneMultipla;
-        private System.Windows.Forms.NumericUpDown pickUpNumeroCampione;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnEstrazioneMultipla;
         private System.Windows.Forms.RadioButton rdbEstrazioniMultipleNoReimmissione;
         private System.Windows.Forms.RadioButton rdbReimmissioneEstrazioneMultiple;
-        private System.Windows.Forms.NumericUpDown pickUpPopolazioneEstrazioniMultiple;
         private System.Windows.Forms.Label label4;
         private myGrid.myGrid dgvEstrazioniMultiple;
         private System.Windows.Forms.GroupBox grpEstrazioniMultiple;
@@ -865,6 +855,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label12;
+        private RegexTextBox.RegexTextBox txtEstrazione;
+        private RegexTextBox.RegexTextBox txtNumeroGruppi;
+        private RegexTextBox.RegexTextBox txtPopolazioneEstrazioniMultiple;
     }
 }
 

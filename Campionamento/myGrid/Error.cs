@@ -15,7 +15,12 @@ namespace myGrid
         public Error(string error)
         {
             InitializeComponent();
-            txtError.Text = error;
+            foreach (string s in error.Split('\n'))
+            {
+                string temp = s;
+                temp = s.Replace("\r", "");
+                txtError.AppendText(temp + "\n");
+            }
         }
 
         private void Error_Load(object sender, EventArgs e)

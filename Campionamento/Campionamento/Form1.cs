@@ -96,16 +96,19 @@ namespace Campionamento
         }
         private void btnEstrai_Click(object sender, EventArgs e)
         {
-            Estrazioni estrazioni = new Estrazioni();
-            if (rdbReimmissione.Checked)
-                fillDataGridView(estrazioni.EstrazioneConReimmissione(dgvMain, (int)pickUpEstrazione.Value));
-            else if (rdbNoReimmissione.Checked)
-                fillDataGridView(estrazioni.EstrazioneNoReimmisione(dgvMain, (int)pickUpEstrazione.Value));
-            valoriGrigliaCampionamento = dgvEstrazioni.getValues();
-            cmbDataEstrazioni.Items.Clear();
-            foreach (myGrid.Values v in valoriGrigliaCampionamento)
-                cmbDataEstrazioni.Items.Add(v.HeaderCell);
-            grpEstrazioni.Enabled = true;
+            if (txtEstrazione.isValid)
+            {
+                Estrazioni estrazioni = new Estrazioni();
+                if (rdbReimmissione.Checked)
+                    fillDataGridView(estrazioni.EstrazioneConReimmissione(dgvMain, Convert.ToInt32(txtEstrazione.Text)));
+                else if (rdbNoReimmissione.Checked && Convert.ToInt32(txtEstrazione.Text) <= dgvMain.RowCount - 1)
+                    fillDataGridView(estrazioni.EstrazioneNoReimmisione(dgvMain, Convert.ToInt32(txtEstrazione.Text)));
+                valoriGrigliaCampionamento = dgvEstrazioni.getValues();
+                cmbDataEstrazioni.Items.Clear();
+                foreach (myGrid.Values v in valoriGrigliaCampionamento)
+                    cmbDataEstrazioni.Items.Add(v.HeaderCell);
+                grpEstrazioni.Enabled = true;
+            }
         }
         private void fillDataGridView(List<string> list)
         {
@@ -130,14 +133,6 @@ namespace Campionamento
         }
         private void tmrControl_Tick(object sender, EventArgs e)
         {
-            if (rdbReimmissione.Checked)
-                pickUpEstrazione.Maximum = decimal.MaxValue;
-            else
-                pickUpEstrazione.Maximum = (decimal)dgvMain.RowCount - 1;
-            if (rdbReimmissioneEstrazioneMultiple.Checked)
-                pickUpPopolazioneEstrazioniMultiple.Maximum = decimal.MaxValue;
-            else
-                pickUpPopolazioneEstrazioniMultiple.Maximum = (decimal)dgvMain.RowCount + ((dgvMain.RowCount == 0) ? 0 : -1);
         }
         private void btnEstrazioneMultipla_Click(object sender, EventArgs e)
         {
@@ -155,26 +150,29 @@ namespace Campionamento
             }
             Estrazioni estrazioni=new Estrazioni();
             List<string> tmp = new List<string>();
-            for (int i = 0; i < (int)pickUpNumeroCampione.Value; i++)
+            if (txtNumeroGruppi.isValid && txtPopolazioneEstrazioniMultiple.isValid)
             {
-                if (rdbReimmissioneEstrazioneMultiple.Checked)
+                for (int i = 0; i < Convert.ToInt32(txtNumeroGruppi.Text); i++)
                 {
-                    tmp = estrazioni.EstrazioneConReimmissione(dgvMain, (int)pickUpPopolazioneEstrazioniMultiple.Value);
-                    valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp,i+1));
-                    setIntoMultipleExtracionGrid(tmp, i + 1);
-                    dgvEstrazioniMultiple.Rows.Add();
+                    if (rdbReimmissioneEstrazioneMultiple.Checked)
+                    {
+                        tmp = estrazioni.EstrazioneConReimmissione(dgvMain,Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text));
+                        valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp, i + 1));
+                        setIntoMultipleExtracionGrid(tmp, i + 1);
+                        dgvEstrazioniMultiple.Rows.Add();
+                    }
+                    else if (rdbEstrazioniMultipleNoReimmissione.Checked)
+                    {
+                        tmp = estrazioni.EstrazioneNoReimmisione(dgvMain, Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text));
+                        valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp, i + 1));
+                        setIntoMultipleExtracionGrid(tmp, i + 1);
+                        dgvEstrazioniMultiple.Rows.Add();
+                    }
                 }
-                else if (rdbEstrazioniMultipleNoReimmissione.Checked)
-                {
-                    tmp = estrazioni.EstrazioneNoReimmisione(dgvMain, (int)pickUpPopolazioneEstrazioniMultiple.Value);
-                    valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp,i+1));
-                    setIntoMultipleExtracionGrid(tmp, i + 1);
-                    dgvEstrazioniMultiple.Rows.Add();
-                }
+                for (int i = 0; i < valoriGrigliaEstrazioniMultiple.Count; i++)
+                    cmbSceltaNumeroEstrazione.Items.Add(valoriGrigliaEstrazioniMultiple[i].TableName);
+                grpEstrazioniMultiple.Enabled = true;
             }
-            for (int i = 0; i < valoriGrigliaEstrazioniMultiple.Count; i++)
-                cmbSceltaNumeroEstrazione.Items.Add(valoriGrigliaEstrazioniMultiple[i].TableName);
-            grpEstrazioniMultiple.Enabled = true;
         }
         private void setIntoMultipleExtracionGrid(List<string> tmp, int n)
         {
@@ -282,7 +280,7 @@ namespace Campionamento
                 {
                     string formatError = string.Format("Valore min: {0} \n\r Valore max: {1} \n\r Valore min<max: {2}", min > 0 ? min.ToString() + " Corretto" : min.ToString() + " Non corretto", max <= dgvMain.RowCount ? max.ToString() + " Corretto" : max.ToString() + " Non corretto", min < max ? " Corretto" : " Non corretto");
                     int n=countWord(formatError, "Non corretto");
-                    formatError = string.Format("Error{0} dat{1} in input: \n\r {2}", n > 1 ? +'i' : 'e', n > 1 ? 'i' : 'o', formatError);
+                    formatError = string.Format("Error{0} dat{1} in input: \n\r {2}", n > 1 ? 'i' : 'e', n > 1 ? 'i' : 'o', formatError);
                     Error error = new Error(formatError);
                     error.ShowDialog();
                 }
