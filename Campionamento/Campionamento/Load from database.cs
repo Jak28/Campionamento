@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using myGrid;
+using System.Data.OleDb;
 namespace Campionamento
 {
     public partial class Load_from_database : Form
@@ -29,16 +30,34 @@ namespace Campionamento
                 txtPath.Text = opendlg.FileName;
                 if (!System.IO.File.Exists(txtPath.Text))
                     return;
-                AdoNet ado = new AdoNet(txtPath.Text);
-                string sql = @"SELECT  MSysObjects.Name FROM MsysObjects WHERE (Left$([Name],1)<>""~"")AND 
-(Left$([Name],4) <> ""Msys"") AND (MSysObjects.Type)=1 ORDER BY MSysObjects.Name;";
-                ado.eseguiQuery(sql, CommandType.Text);
-                for (int i = 0; i < ado.daTable.Rows.Count; i++)
-                    cmbTableName.DataSource = ado.daTable;
+                string conn=String.Empty;
+                if (System.IO.Path.GetExtension(txtPath.Text).Equals(".mdb"))
+                    conn = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + txtPath.Text;
+                else if (System.IO.Path.GetExtension(txtPath.Text).Equals(".accdb"))
+                    conn = @"Provider=Microsoft.Ace.OLEDB.12.0;Data Source=" + txtPath.Text;
+                OleDbConnection con = new OleDbConnection(conn);
+                con.Open();
+                Console.WriteLine("Made the connection to the database");
+
+                Console.WriteLine("Information for each table contains:");
+                DataTable tables = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+
+                Console.WriteLine("The tables are:");
+                foreach (DataRow row in tables.Rows)
+                    cmbTableName.Items.Add(row[2]);
+
+
+                con.Close();
+                
             }
         }
 
         private void Load_from_database_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
         {
 
         }
