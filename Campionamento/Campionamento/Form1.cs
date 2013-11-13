@@ -90,7 +90,6 @@ namespace Campionamento
             grpEstrazioni.Enabled = false;
             grpEstrazioniMultiple.Enabled = false;
             rdbReimmissione.Checked = true;
-            tmrControl.Start();
             ((Control)this.tabClassi).Enabled = false;
            
         }
@@ -331,7 +330,6 @@ namespace Campionamento
                     select s;
             return v.Count();
         }
-
         private void btnLoadFromXls_Click(object sender, EventArgs e)
         {
             Load_from_xls xls = new Load_from_xls();
@@ -351,13 +349,32 @@ namespace Campionamento
                 {/*TODO*/ }
             }
         }
-
         private void txtXMin_KeyPress(object sender, KeyPressEventArgs e)
         {
             var temp = (RegexTextBox.RegexTextBox)sender;
             System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(temp.Pattern);
             e.Handled = (regex.IsMatch(e.KeyChar.ToString())||char.IsControl(e.KeyChar)) ? false : true;
                 
+        }
+        private void btnOkClassiEstrazioniMultiple_Click(object sender, EventArgs e)
+        {
+            bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbColonnaClassiEstazioniMultiple.Text != string.Empty;
+            if (correct)
+            {
+                int min = Convert.ToInt32(txtXMin.Text);
+                int max = Convert.ToInt32(txtXMax.Text);
+                int nClassi = Convert.ToInt32(txtNClassi.Text);
+                int gruppiSuddivisioni = (max - min) / nClassi;
+                int res = (max - min) - gruppiSuddivisioni * nClassi;
+                List<double> mediaCampionamentoMultiplo = new List<double>();
+                foreach (myGrid.ValuesMultiExtracions vme in valoriGrigliaEstrazioniMultiple)
+                    foreach (myGrid.Values v in vme.Values)
+                        if (v.HeaderCell.Equals(cmbColonnaClassiEstazioniMultiple.Text))
+                            mediaCampionamentoMultiplo.Add(v.Media);
+                MessageBox.Show("Lollipop");
+            }
+            else
+            { /*TODO*/}
         }
     }
 }

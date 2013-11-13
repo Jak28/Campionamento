@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabCampionamento = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
             this.grpMainTab = new System.Windows.Forms.GroupBox();
@@ -92,7 +91,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtXMin = new RegexTextBox.RegexTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tmrControl = new System.Windows.Forms.Timer(this.components);
             this.tabCampionamento.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.grpMainTab.SuspendLayout();
@@ -593,6 +591,7 @@
             this.btnOkClassiEstrazioniMultiple.TabIndex = 2;
             this.btnOkClassiEstrazioniMultiple.Text = "Ok";
             this.btnOkClassiEstrazioniMultiple.UseVisualStyleBackColor = true;
+            this.btnOkClassiEstrazioniMultiple.Click += new System.EventHandler(this.btnOkClassiEstrazioniMultiple_Click);
             // 
             // cmbColonnaClassiEstazioniMultiple
             // 
@@ -756,10 +755,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Min";
             // 
-            // tmrControl
-            // 
-            this.tmrControl.Tick += new System.EventHandler(this.tmrControl_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -825,7 +820,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbDataEstrazioni;
         private System.Windows.Forms.TabPage tabEstrazioniMultiple;
-        private System.Windows.Forms.Timer tmrControl;
         private System.Windows.Forms.GroupBox grpEstrazioneMultipla;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnEstrazioneMultipla;
