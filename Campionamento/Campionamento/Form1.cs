@@ -146,7 +146,6 @@ namespace Campionamento
         {
             if (Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text) > 0 && Convert.ToInt32(txtNumeroGruppi.Text) > 0)
             {
-                grpClassiEstrazioneMultipla.Enabled = true;
                 valoriGrigliaEstrazioniMultiple.Clear();
                 dgvEstrazioniMultiple.Clear();
                 cmbSceltaNumeroEstrazione.Items.Clear();
@@ -184,6 +183,10 @@ namespace Campionamento
                         cmbSceltaNumeroEstrazione.Items.Add(valoriGrigliaEstrazioniMultiple[i].TableName);
                     grpEstrazioniMultiple.Enabled = true;
                 }
+                cmbColonnaClassiEstazioniMultiple.Items.Clear();
+                for (int i = 0; i < dgvMain.ColumnCount; i++)
+                    cmbColonnaClassiEstazioniMultiple.Items.Add(dgvMain.Columns[i].HeaderCell.Value);
+                grpClassiEstrazioneMultipla.Enabled = true;
             }
             else
             { /*TODO*/}
