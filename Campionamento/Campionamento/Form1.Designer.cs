@@ -69,7 +69,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dgvEstrazioniMultiple = new myGrid.myGrid();
             this.tabClassi = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.grpClassiEstrazioneMultipla = new System.Windows.Forms.GroupBox();
             this.myGrid1 = new myGrid.myGrid();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,7 +107,7 @@
             this.grpEstrazioneMultipla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).BeginInit();
             this.tabClassi.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.grpClassiEstrazioneMultipla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid1)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).BeginInit();
@@ -529,7 +529,7 @@
             // 
             // tabClassi
             // 
-            this.tabClassi.Controls.Add(this.groupBox5);
+            this.tabClassi.Controls.Add(this.grpClassiEstrazioneMultipla);
             this.tabClassi.Controls.Add(this.groupBox4);
             this.tabClassi.Controls.Add(this.groupBox2);
             this.tabClassi.Location = new System.Drawing.Point(4, 22);
@@ -540,18 +540,19 @@
             this.tabClassi.Text = "Classi";
             this.tabClassi.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // grpClassiEstrazioneMultipla
             // 
-            this.groupBox5.Controls.Add(this.myGrid1);
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Controls.Add(this.comboBox1);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(245, 68);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(205, 288);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Classi estrazioni multiple";
+            this.grpClassiEstrazioneMultipla.Controls.Add(this.myGrid1);
+            this.grpClassiEstrazioneMultipla.Controls.Add(this.button1);
+            this.grpClassiEstrazioneMultipla.Controls.Add(this.comboBox1);
+            this.grpClassiEstrazioneMultipla.Controls.Add(this.label12);
+            this.grpClassiEstrazioneMultipla.Enabled = false;
+            this.grpClassiEstrazioneMultipla.Location = new System.Drawing.Point(245, 68);
+            this.grpClassiEstrazioneMultipla.Name = "grpClassiEstrazioneMultipla";
+            this.grpClassiEstrazioneMultipla.Size = new System.Drawing.Size(205, 288);
+            this.grpClassiEstrazioneMultipla.TabIndex = 7;
+            this.grpClassiEstrazioneMultipla.TabStop = false;
+            this.grpClassiEstrazioneMultipla.Text = "Classi estrazioni multiple";
             // 
             // myGrid1
             // 
@@ -787,8 +788,8 @@
             this.grpEstrazioneMultipla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).EndInit();
             this.tabClassi.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.grpClassiEstrazioneMultipla.ResumeLayout(false);
+            this.grpClassiEstrazioneMultipla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGrid1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -854,7 +855,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox grpClassiEstrazioneMultipla;
         private myGrid.myGrid myGrid1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;

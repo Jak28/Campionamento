@@ -46,7 +46,10 @@ namespace Campionamento
 
                 Console.WriteLine("The tables are:");
                 foreach (DataRow row in tables.Rows)
+                {
+                    Console.WriteLine(row[2]);
                     cmbTableName.Items.Add(row[2]);
+                }
 
 
                 con.Close();

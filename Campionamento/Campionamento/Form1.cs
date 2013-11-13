@@ -144,43 +144,49 @@ namespace Campionamento
         }
         private void btnEstrazioneMultipla_Click(object sender, EventArgs e)
         {
-            valoriGrigliaEstrazioniMultiple.Clear();
-            dgvEstrazioniMultiple.Clear();
-            cmbSceltaNumeroEstrazione.Items.Clear();
-            cmbSceltaColonna.Items.Clear();
-            cmbSceltaNumeroEstrazione.Text = cmbSceltaColonna.Text = string.Empty;
-            dgvEstrazioniMultiple.ColumnCount++;
-            dgvEstrazioniMultiple.Columns[0].HeaderCell.Value = "Numero Estrazione";
-            for (int i = 0; i < dgvMain.ColumnCount; i++)
+            if (Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text) > 0 && Convert.ToInt32(txtNumeroGruppi.Text) > 0)
             {
+                grpClassiEstrazioneMultipla.Enabled = true;
+                valoriGrigliaEstrazioniMultiple.Clear();
+                dgvEstrazioniMultiple.Clear();
+                cmbSceltaNumeroEstrazione.Items.Clear();
+                cmbSceltaColonna.Items.Clear();
+                cmbSceltaNumeroEstrazione.Text = cmbSceltaColonna.Text = string.Empty;
                 dgvEstrazioniMultiple.ColumnCount++;
-                dgvEstrazioniMultiple.Columns[i+1].HeaderCell.Value = dgvMain.Columns[i].HeaderCell.Value;
-            }
-            Estrazioni estrazioni=new Estrazioni();
-            List<string> tmp = new List<string>();
-            if (txtNumeroGruppi.isValid && txtPopolazioneEstrazioniMultiple.isValid)
-            {
-                for (int i = 0; i < Convert.ToInt32(txtNumeroGruppi.Text); i++)
+                dgvEstrazioniMultiple.Columns[0].HeaderCell.Value = "Numero Estrazione";
+                for (int i = 0; i < dgvMain.ColumnCount; i++)
                 {
-                    if (rdbReimmissioneEstrazioneMultiple.Checked)
-                    {
-                        tmp = estrazioni.EstrazioneConReimmissione(dgvMain,Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text));
-                        valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp, i + 1));
-                        setIntoMultipleExtracionGrid(tmp, i + 1);
-                        dgvEstrazioniMultiple.Rows.Add();
-                    }
-                    else if (rdbEstrazioniMultipleNoReimmissione.Checked)
-                    {
-                        tmp = estrazioni.EstrazioneNoReimmisione(dgvMain, Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text));
-                        valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp, i + 1));
-                        setIntoMultipleExtracionGrid(tmp, i + 1);
-                        dgvEstrazioniMultiple.Rows.Add();
-                    }
+                    dgvEstrazioniMultiple.ColumnCount++;
+                    dgvEstrazioniMultiple.Columns[i + 1].HeaderCell.Value = dgvMain.Columns[i].HeaderCell.Value;
                 }
-                for (int i = 0; i < valoriGrigliaEstrazioniMultiple.Count; i++)
-                    cmbSceltaNumeroEstrazione.Items.Add(valoriGrigliaEstrazioniMultiple[i].TableName);
-                grpEstrazioniMultiple.Enabled = true;
+                Estrazioni estrazioni = new Estrazioni();
+                List<string> tmp = new List<string>();
+                if (txtNumeroGruppi.isValid && txtPopolazioneEstrazioniMultiple.isValid)
+                {
+                    for (int i = 0; i < Convert.ToInt32(txtNumeroGruppi.Text); i++)
+                    {
+                        if (rdbReimmissioneEstrazioneMultiple.Checked)
+                        {
+                            tmp = estrazioni.EstrazioneConReimmissione(dgvMain, Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text));
+                            valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp, i + 1));
+                            setIntoMultipleExtracionGrid(tmp, i + 1);
+                            dgvEstrazioniMultiple.Rows.Add();
+                        }
+                        else if (rdbEstrazioniMultipleNoReimmissione.Checked)
+                        {
+                            tmp = estrazioni.EstrazioneNoReimmisione(dgvMain, Convert.ToInt32(txtPopolazioneEstrazioniMultiple.Text));
+                            valoriGrigliaEstrazioniMultiple.Add(loadMultipleValuesIntoList(tmp, i + 1));
+                            setIntoMultipleExtracionGrid(tmp, i + 1);
+                            dgvEstrazioniMultiple.Rows.Add();
+                        }
+                    }
+                    for (int i = 0; i < valoriGrigliaEstrazioniMultiple.Count; i++)
+                        cmbSceltaNumeroEstrazione.Items.Add(valoriGrigliaEstrazioniMultiple[i].TableName);
+                    grpEstrazioniMultiple.Enabled = true;
+                }
             }
+            else
+            { /*TODO*/}
         }
         private void setIntoMultipleExtracionGrid(List<string> tmp, int n)
         {
@@ -267,14 +273,16 @@ namespace Campionamento
             bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbScegliColonnaPopolazione.Text != string.Empty;
             if (correct)
             {
-                double min = Convert.ToDouble(txtXMin.Text);
-                double max = Convert.ToDouble(txtXMax.Text);
+                int min = Convert.ToInt32(txtXMin.Text);
+                int max = Convert.ToInt32(txtXMax.Text);
                 int nClassi = Convert.ToInt32(txtNClassi.Text);
-                if (min < max && min > 0 && max <= dgvMain.RowCount - 1)
+                int gruppiSuddivisioni = (max - min) / nClassi;
+                int res = (max - min) - gruppiSuddivisioni * nClassi;
+                if (min < max && min > -1 && max <= dgvMain.RowCount - 1 && nClassi > 0)
                 {
                     myGrid.GridInList tempGridInList = new myGrid.GridInList();
                     foreach (myGrid.GridInList glt in gridInList)
-                        if (glt.Equals(cmbScegliColonnaPopolazione.Text))
+                        if (glt.HeaderCellText.Equals(cmbScegliColonnaPopolazione.Text))
                         {
                             tempGridInList = glt;
                             break;
@@ -283,11 +291,29 @@ namespace Campionamento
                     for (int i = 0; i < tempGridInList.ValueCells.Count; i++)
                         temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
                     temp.Sort();
+                    IEnumerable<double> tempIE;
+                    for (int i = 0; i < nClassi; i++)
+                    {
+                        tempIE = from d in temp
+                                 where d >= min && d < min + gruppiSuddivisioni
+                                 select d;
+                        Console.WriteLine(string.Format("Min: {0} Min+gruppi: {1} Count: {2}", min, min + gruppiSuddivisioni, tempIE.Count()));
+                        dgvClassiPopolazione.Rows.Add(min, min + gruppiSuddivisioni, tempIE.Count());
+                        min = min + gruppiSuddivisioni;
+                    }
+                    if (res > 0)
+                    {
+                        tempIE = from d in temp
+                                 where d >= min && d < min + res
+                                 select d;
+                        Console.WriteLine(string.Format("Min: {0} Min+res: {1} Count: {2}", min, min + res, tempIE.Count()));
+                        dgvClassiPopolazione.Rows.Add(min, min + res, tempIE.Count());
+                    }
                 }
                 else
                 {
-                    string formatError = string.Format("Valore min: {0} \n\r Valore max: {1} \n\r Valore min<max: {2}", min > 0 && min<max ? min.ToString() + " Corretto" : min.ToString() + " Non corretto", max <= dgvMain.RowCount ? max.ToString() + " Corretto" : max.ToString() + " Non corretto", min < max ? " Corretto" : " Non corretto");
-                    int n=countWord(formatError, "Non corretto");
+                    string formatError = string.Format("Valore min: {0} \n\r Valore max: {1} \n\r Valore min<max: {2}", min > 0 && min < max ? min.ToString() + " Corretto" : min.ToString() + " Non corretto", max <= dgvMain.RowCount ? max.ToString() + " Corretto" : max.ToString() + " Non corretto", min < max ? " Corretto" : " Non corretto");
+                    int n = countWord(formatError, "Non corretto");
                     formatError = string.Format("Error{0} dat{1} in input: \n\r {2}", n > 1 ? 'i' : 'e', n > 1 ? 'i' : 'o', formatError);
                     Error error = new Error(formatError);
                     error.ShowDialog();

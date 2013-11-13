@@ -34,6 +34,7 @@ namespace Campionamento
                 ExcelLibrary.SpreadSheet.Workbook workbook = new ExcelLibrary.SpreadSheet.Workbook();
                 workbook = ExcelLibrary.SpreadSheet.Workbook.Load(opendlg.FileName);
                 txtFilenameXls.Text = opendlg.FileName;
+                Console.WriteLine("Sheets name in Xls: ");
                 for (int i = 0; i < workbook.Worksheets.Count; i++)
                 {
                     Console.WriteLine(workbook.Worksheets[i].Name);
