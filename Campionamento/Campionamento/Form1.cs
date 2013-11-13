@@ -278,10 +278,13 @@ namespace Campionamento
                 int min = Convert.ToInt32(txtXMin.Text);
                 int max = Convert.ToInt32(txtXMax.Text);
                 int nClassi = Convert.ToInt32(txtNClassi.Text);
-                int gruppiSuddivisioni = (max - min) / nClassi;
-                int res = (max - min) - gruppiSuddivisioni * nClassi;
+                
                 if (min < max && min > -1 && max <= dgvMain.RowCount - 1 && nClassi > 0)
                 {
+                    IEnumerable<double> tempIE;
+                    List<double> temp = new List<double>();
+                    int gruppiSuddivisioni = (max - min) / nClassi;
+                    int res = (max - min) - gruppiSuddivisioni * nClassi;
                     myGrid.GridInList tempGridInList = new myGrid.GridInList();
                     foreach (myGrid.GridInList glt in gridInList)
                         if (glt.HeaderCellText.Equals(cmbScegliColonnaPopolazione.Text))
@@ -289,11 +292,9 @@ namespace Campionamento
                             tempGridInList = glt;
                             break;
                         }
-                    List<double> temp = new List<double>();
                     for (int i = 0; i < tempGridInList.ValueCells.Count; i++)
                         temp.Add(Convert.ToDouble(tempGridInList.ValueCells[i]));
                     temp.Sort();
-                    IEnumerable<double> tempIE;
                     for (int i = 0; i < nClassi; i++)
                     {
                         tempIE = from d in temp
@@ -361,17 +362,40 @@ namespace Campionamento
             bool correct = txtNClassi.isValid && txtXMax.isValid && txtXMin.isValid && cmbColonnaClassiEstazioniMultiple.Text != string.Empty;
             if (correct)
             {
-                int min = Convert.ToInt32(txtXMin.Text);
-                int max = Convert.ToInt32(txtXMax.Text);
+                double min = Convert.ToDouble(txtXMin.Text);
+                double max = Convert.ToDouble(txtXMax.Text);
                 int nClassi = Convert.ToInt32(txtNClassi.Text);
-                int gruppiSuddivisioni = (max - min) / nClassi;
-                int res = (max - min) - gruppiSuddivisioni * nClassi;
-                List<double> mediaCampionamentoMultiplo = new List<double>();
+                List<double> tempMediaCampionamentoMultiplo = new List<double>();
                 foreach (myGrid.ValuesMultiExtracions vme in valoriGrigliaEstrazioniMultiple)
                     foreach (myGrid.Values v in vme.Values)
                         if (v.HeaderCell.Equals(cmbColonnaClassiEstazioniMultiple.Text))
-                            mediaCampionamentoMultiplo.Add(v.Media);
-                MessageBox.Show("Lollipop");
+                            tempMediaCampionamentoMultiplo.Add(v.Media);
+                tempMediaCampionamentoMultiplo.Sort();
+                if (min > -1 && max <= tempMediaCampionamentoMultiplo[tempMediaCampionamentoMultiplo.Count - 1])
+                {
+                    int gruppiSuddivisioni =(int) (max - min) / nClassi;
+                    double res = (max - min) - gruppiSuddivisioni * nClassi;
+                    IEnumerable<double> tempIE;
+                    for (int i = 0; i < nClassi; i++)
+                    {
+                        tempIE = from d in tempMediaCampionamentoMultiplo
+                                 where d >= min && d < min + gruppiSuddivisioni
+                                 select d;
+                        Console.WriteLine(string.Format("Min: {0} Min+gruppi: {1} Count: {2}", min, min + gruppiSuddivisioni, tempIE.Count()));
+                        dgvClassiEstrazioniMultiple.Rows.Add(min, min + gruppiSuddivisioni, tempIE.Count());
+                    }
+                    if (res > 0)
+                    {
+                        tempIE = from d in tempMediaCampionamentoMultiplo
+                                 where d >= min && d < min + res
+                                 select d;
+                        Console.WriteLine(string.Format("Min: {0} Min+res: {1} Count: {2}", min, min + res, tempIE.Count()));
+                        dgvClassiPopolazione.Rows.Add(min, min + res, tempIE.Count());
+                    }
+                }
+                    
+                else
+                { /*TODO*/}
             }
             else
             { /*TODO*/}

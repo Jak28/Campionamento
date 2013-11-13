@@ -69,7 +69,7 @@
             this.dgvEstrazioniMultiple = new myGrid.myGrid();
             this.tabClassi = new System.Windows.Forms.TabPage();
             this.grpClassiEstrazioneMultipla = new System.Windows.Forms.GroupBox();
-            this.myGrid1 = new myGrid.myGrid();
+            this.dgvClassiEstrazioniMultiple = new myGrid.myGrid();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,7 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstrazioniMultiple)).BeginInit();
             this.tabClassi.SuspendLayout();
             this.grpClassiEstrazioneMultipla.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.myGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClassiEstrazioniMultiple)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -540,7 +540,7 @@
             // 
             // grpClassiEstrazioneMultipla
             // 
-            this.grpClassiEstrazioneMultipla.Controls.Add(this.myGrid1);
+            this.grpClassiEstrazioneMultipla.Controls.Add(this.dgvClassiEstrazioniMultiple);
             this.grpClassiEstrazioneMultipla.Controls.Add(this.btnOkClassiEstrazioniMultiple);
             this.grpClassiEstrazioneMultipla.Controls.Add(this.cmbColonnaClassiEstazioniMultiple);
             this.grpClassiEstrazioneMultipla.Controls.Add(this.label12);
@@ -552,18 +552,18 @@
             this.grpClassiEstrazioneMultipla.TabStop = false;
             this.grpClassiEstrazioneMultipla.Text = "Classi estrazioni multiple";
             // 
-            // myGrid1
+            // dgvClassiEstrazioniMultiple
             // 
-            this.myGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.myGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvClassiEstrazioniMultiple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClassiEstrazioniMultiple.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.myGrid1.Location = new System.Drawing.Point(6, 84);
-            this.myGrid1.Name = "myGrid1";
-            this.myGrid1.ReadOnly = true;
-            this.myGrid1.Size = new System.Drawing.Size(193, 198);
-            this.myGrid1.TabIndex = 3;
+            this.dgvClassiEstrazioniMultiple.Location = new System.Drawing.Point(6, 84);
+            this.dgvClassiEstrazioniMultiple.Name = "dgvClassiEstrazioniMultiple";
+            this.dgvClassiEstrazioniMultiple.ReadOnly = true;
+            this.dgvClassiEstrazioniMultiple.Size = new System.Drawing.Size(193, 198);
+            this.dgvClassiEstrazioniMultiple.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -722,7 +722,7 @@
             this.txtXMax.CheckTextBox = true;
             this.txtXMax.Location = new System.Drawing.Point(170, 22);
             this.txtXMax.Name = "txtXMax";
-            this.txtXMax.Pattern = "^[0-9]{0,}$";
+            this.txtXMax.Pattern = "^[0-9]{0,}([.,][0-9]{1,3})?$";
             this.txtXMax.Size = new System.Drawing.Size(100, 20);
             this.txtXMax.TabIndex = 3;
             this.txtXMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
@@ -741,7 +741,7 @@
             this.txtXMin.CheckTextBox = true;
             this.txtXMin.Location = new System.Drawing.Point(36, 22);
             this.txtXMin.Name = "txtXMin";
-            this.txtXMin.Pattern = "^[0-9]{0,}$";
+            this.txtXMin.Pattern = "^[0-9]{0,}([.,][0-9]{1,3})?$";
             this.txtXMin.Size = new System.Drawing.Size(100, 20);
             this.txtXMin.TabIndex = 1;
             this.txtXMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
@@ -785,7 +785,7 @@
             this.tabClassi.ResumeLayout(false);
             this.grpClassiEstrazioneMultipla.ResumeLayout(false);
             this.grpClassiEstrazioneMultipla.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.myGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClassiEstrazioniMultiple)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassiPopolazione)).EndInit();
@@ -850,7 +850,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.GroupBox grpClassiEstrazioneMultipla;
-        private myGrid.myGrid myGrid1;
+        private myGrid.myGrid dgvClassiEstrazioniMultiple;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
