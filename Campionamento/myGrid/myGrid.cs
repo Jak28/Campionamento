@@ -150,13 +150,8 @@ namespace myGrid
                 temp.HeaderCellText = this.Columns[i].HeaderCell.Value.ToString();
                 temp.ValueCells = new List<string>();
                 for (int j = 0; j < this.RowCount; j++)
-                {
-                    try
-                    {
+                    if(this[i,j]!=null)
                         temp.ValueCells.Add(this[i, j].Value.ToString());
-                    }
-                    catch { }
-                }
                 ret.Add(temp);
             }
             return ret;

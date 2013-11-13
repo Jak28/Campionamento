@@ -60,6 +60,8 @@
             this.cmbSceltaNumeroEstrazione = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.grpEstrazioneMultipla = new System.Windows.Forms.GroupBox();
+            this.txtNumeroGruppi = new RegexTextBox.RegexTextBox();
+            this.txtPopolazioneEstrazioniMultiple = new RegexTextBox.RegexTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnEstrazioneMultipla = new System.Windows.Forms.Button();
             this.rdbEstrazioniMultipleNoReimmissione = new System.Windows.Forms.RadioButton();
@@ -91,8 +93,6 @@
             this.txtXMin = new RegexTextBox.RegexTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tmrControl = new System.Windows.Forms.Timer(this.components);
-            this.txtPopolazioneEstrazioniMultiple = new RegexTextBox.RegexTextBox();
-            this.txtNumeroGruppi = new RegexTextBox.RegexTextBox();
             this.tabCampionamento.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.grpMainTab.SuspendLayout();
@@ -305,6 +305,7 @@
             this.txtEstrazione.Pattern = "^[0-9]{0,}$";
             this.txtEstrazione.Size = new System.Drawing.Size(103, 20);
             this.txtEstrazione.TabIndex = 5;
+            this.txtEstrazione.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
             // 
             // btnEstrai
             // 
@@ -446,6 +447,26 @@
             this.grpEstrazioneMultipla.TabIndex = 4;
             this.grpEstrazioneMultipla.TabStop = false;
             this.grpEstrazioneMultipla.Text = "Estrazione multipla";
+            // 
+            // txtNumeroGruppi
+            // 
+            this.txtNumeroGruppi.CheckTextBox = true;
+            this.txtNumeroGruppi.Location = new System.Drawing.Point(76, 59);
+            this.txtNumeroGruppi.Name = "txtNumeroGruppi";
+            this.txtNumeroGruppi.Pattern = "^[0-9]{0,}$";
+            this.txtNumeroGruppi.Size = new System.Drawing.Size(118, 20);
+            this.txtNumeroGruppi.TabIndex = 8;
+            this.txtNumeroGruppi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
+            // 
+            // txtPopolazioneEstrazioniMultiple
+            // 
+            this.txtPopolazioneEstrazioniMultiple.CheckTextBox = true;
+            this.txtPopolazioneEstrazioniMultiple.Location = new System.Drawing.Point(77, 28);
+            this.txtPopolazioneEstrazioniMultiple.Name = "txtPopolazioneEstrazioniMultiple";
+            this.txtPopolazioneEstrazioniMultiple.Pattern = "^[0-9]{0,}$";
+            this.txtPopolazioneEstrazioniMultiple.Size = new System.Drawing.Size(117, 20);
+            this.txtPopolazioneEstrazioniMultiple.TabIndex = 7;
+            this.txtPopolazioneEstrazioniMultiple.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
             // 
             // label5
             // 
@@ -685,6 +706,7 @@
             this.txtNClassi.Pattern = "^[0-9]{0,}$";
             this.txtNClassi.Size = new System.Drawing.Size(100, 20);
             this.txtNClassi.TabIndex = 5;
+            this.txtNClassi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
             // 
             // label10
             // 
@@ -703,6 +725,7 @@
             this.txtXMax.Pattern = "^[0-9]{0,}$";
             this.txtXMax.Size = new System.Drawing.Size(100, 20);
             this.txtXMax.TabIndex = 3;
+            this.txtXMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
             // 
             // label9
             // 
@@ -721,6 +744,7 @@
             this.txtXMin.Pattern = "^[0-9]{0,}$";
             this.txtXMin.Size = new System.Drawing.Size(100, 20);
             this.txtXMin.TabIndex = 1;
+            this.txtXMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtXMin_KeyPress);
             // 
             // label8
             // 
@@ -734,24 +758,6 @@
             // tmrControl
             // 
             this.tmrControl.Tick += new System.EventHandler(this.tmrControl_Tick);
-            // 
-            // txtPopolazioneEstrazioniMultiple
-            // 
-            this.txtPopolazioneEstrazioniMultiple.CheckTextBox = true;
-            this.txtPopolazioneEstrazioniMultiple.Location = new System.Drawing.Point(77, 28);
-            this.txtPopolazioneEstrazioniMultiple.Name = "txtPopolazioneEstrazioniMultiple";
-            this.txtPopolazioneEstrazioniMultiple.Pattern = "^[0-9]{0,}$";
-            this.txtPopolazioneEstrazioniMultiple.Size = new System.Drawing.Size(117, 20);
-            this.txtPopolazioneEstrazioniMultiple.TabIndex = 7;
-            // 
-            // txtNumeroGruppi
-            // 
-            this.txtNumeroGruppi.CheckTextBox = true;
-            this.txtNumeroGruppi.Location = new System.Drawing.Point(76, 59);
-            this.txtNumeroGruppi.Name = "txtNumeroGruppi";
-            this.txtNumeroGruppi.Pattern = "^[0-9]{0,}$";
-            this.txtNumeroGruppi.Size = new System.Drawing.Size(118, 20);
-            this.txtNumeroGruppi.TabIndex = 8;
             // 
             // Form1
             // 

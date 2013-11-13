@@ -286,7 +286,7 @@ namespace Campionamento
                 }
                 else
                 {
-                    string formatError = string.Format("Valore min: {0} \n\r Valore max: {1} \n\r Valore min<max: {2}", min > 0 ? min.ToString() + " Corretto" : min.ToString() + " Non corretto", max <= dgvMain.RowCount ? max.ToString() + " Corretto" : max.ToString() + " Non corretto", min < max ? " Corretto" : " Non corretto");
+                    string formatError = string.Format("Valore min: {0} \n\r Valore max: {1} \n\r Valore min<max: {2}", min > 0 && min<max ? min.ToString() + " Corretto" : min.ToString() + " Non corretto", max <= dgvMain.RowCount ? max.ToString() + " Corretto" : max.ToString() + " Non corretto", min < max ? " Corretto" : " Non corretto");
                     int n=countWord(formatError, "Non corretto");
                     formatError = string.Format("Error{0} dat{1} in input: \n\r {2}", n > 1 ? 'i' : 'e', n > 1 ? 'i' : 'o', formatError);
                     Error error = new Error(formatError);
@@ -321,6 +321,14 @@ namespace Campionamento
                 else
                 {/*TODO*/ }
             }
+        }
+
+        private void txtXMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var temp = (RegexTextBox.RegexTextBox)sender;
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(temp.Pattern);
+            e.Handled = (regex.IsMatch(e.KeyChar.ToString())||char.IsControl(e.KeyChar)) ? false : true;
+                
         }
     }
 }

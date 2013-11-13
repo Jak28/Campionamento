@@ -10,7 +10,7 @@ namespace Campionamento
     {
         public List<string> EstrazioneNoReimmisione(System.Windows.Forms.DataGridView dgv,int howMuch)
         {
-            List<string> listGrid = GridToList(dgv);
+            List<string> listGrid = RecordToList(dgv);
             List<string> random = new List<string>();
             Random rnd = new Random();
             for (int i = 0; i < howMuch; i++)
@@ -23,7 +23,7 @@ namespace Campionamento
         }
         public List<string> EstrazioneConReimmissione(System.Windows.Forms.DataGridView dgv, int howMuch)
         {
-            List<string> listGrid = GridToList(dgv);
+            List<string> listGrid = RecordToList(dgv);
             List<string> random = new List<string>();
             Random rnd = new Random();
             for (int i = 0; i < howMuch; i++)
@@ -33,7 +33,7 @@ namespace Campionamento
             }
             return random;
         }
-        private List<string> GridToList(System.Windows.Forms.DataGridView dgv)
+        private List<string> RecordToList(System.Windows.Forms.DataGridView dgv)
         {
             List<string> ret = new List<string>();
             string line;
